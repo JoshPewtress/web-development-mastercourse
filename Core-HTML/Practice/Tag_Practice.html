@@ -6,33 +6,47 @@
         <link rel="icon" href="../Learning/favicon.ico" />
     </head>
     <body>
-        <img src="Images/rainy-road.jpg" alt="Road in a forest, covered in rain."
-            height="314" width="571">
-        <h1>A HTML Practice Webpage</h1>
-        <p>
-            A webpage made while practicing what I learn by following the "Web Development Mastercourse",
-            published by Tim Corey via IAmTimCorey.com.
-        </p>
-        <div>
-            <h2>Navigation</h2>
-            <ul>
-                <li><a href="Learning_Plan.html">Learning Plan</a></li>
-                <li><a href="Hire_Me.html">Hire Me</a></li>
-            </ul>
-        </div>
-        <h2>Topics covered so far:</h2>
-        <div id="topics">
-            <ul>
-                <li><span>Fundamental HTML Tags - The structure behind HTML.</span></li>
-                <li><span>Page Head Tags - Assigning a Title and Favicon to a webpage.</span></li>
-                <li><span>Header Tags - H1 - H6, and best practices for using them.</span></li>
-                <li><span>Div Tag - A division of a page used to hold other tags.</span></li>
-                <li><span>Paragraph Tag - Used to hold a block of text.</span></li>
-                <li><span>Span Tag - Seperate specific text to assign styling.</span></li>
-                <li><span>Lists - Ordered and Unordered.</span></li>
-                <li><span>Tables - Display information in a table format.</span></li>
-                <li><span>Forms - Labels, Inputs, Buttons, Form Actions and Methods.</span></li>
-            </ul>
-        </div>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="Learning_Plan.html">Learning Plan</a></li>
+                    <li><a href="Hire_Me.html">Hire Me</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <figure>
+                <img src="Images/rainy-road.jpg" alt="Road in a forest, covered in rain."
+                height="314" width="571">
+                <figcaption>Fig 1 - A rainy road leading into fog.</figcaption>
+            </figure>
+            <article>
+                <h1>A HTML Practice Webpage</h1>
+                <aside>
+                    A webpage made while practicing what I learn by following the <span>"Web Development Mastercourse"</span>,
+                    published by Tim Corey via IAmTimCorey.com.
+                </aside>
+                <section>
+                    <h2>Topics covered so far:</h2>
+                    <div id="topics">
+                        <ul>
+                            <li>Fundamental HTML Tags - The structure behind HTML.</li>
+                            <li>Page Head Tags - Assigning a Title and Favicon to a webpage.</li>
+                            <li>Header Tags - H1 - H6, and best practices for using them.</li>
+                            <li>Div Tag - A division of a page used to hold other tags.</li>
+                            <li>Paragraph Tag - Used to hold a block of text.</li>
+                            <li>Span Tag - Seperate specific text to assign styling.</li>
+                            <li>Lists - Ordered and Unordered.</li>
+                            <li>Tables - Display information in a table format.</li>
+                            <li>Forms - Labels, Inputs, Buttons, Form Actions and Methods.</li>
+                            <li>Accessibility - Semantic structure tags and their uses.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+        </main>
+        <footer>
+            &copy; Josh Pewtress, All Rights Reserved
+        </footer>
     </body>
 </html>
