@@ -9,3 +9,19 @@ h1 {
 span {
     font-size: 70px;
 }
+
+.starting-character {
+    font-size: 50px;
+}
+
+.starting-character.first-overall-character {
+    color: red;
+}
+
+.sample-copy {
+    font-size: 24px;
+}
+
+footer.sample-copy {
+    color: red;
+}
