@@ -10,6 +10,14 @@ h2 {
     font-size: 30px;
 }
 
+.bold {
+    font-weight: bold;
+}
+
+figcaption {
+    font-size: 16px;
+}
+
 label {
     font-weight: bold;
 }
