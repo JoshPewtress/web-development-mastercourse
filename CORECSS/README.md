@@ -183,6 +183,19 @@ h2 {
 Uses numeric values for **red**, **green**, **blue** and optional **alpha** for transparency.
 
 ```css
+div {
+    background-color: rgba(255, 0, 0, 0.5); /* semi-transparent red */
+}
+```
+
+### HSL / HSLA
+HSL stands for **Hue**, **Saturation**, and **Lightness**. HSLA adds an Alpha channel for transparency.
+
+- **Hue**: 0-360 (color wheel)
+- **Saturation**: 0% - 100%
+- **Lightness**: 0% - 100%
+
+```css
 button {
     color: hsl(210, 90%, 55%); /* no alpha */
     color: hsla(210, 90%, 55%, 0.7) /* with alpha */
