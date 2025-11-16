@@ -31,6 +31,8 @@ A `class` is a **reusable style** that can be applied to **multiple** elements.
 }
 ```
 
+---
+
 ## Sizing
 
 Element sizing can be done using **fixed units** (such as pixels) or **responsive units** (`em`, `rem`).  
@@ -65,3 +67,43 @@ The units `em` and `rem`, size elements relative to other values, allowing them 
     font-size: 1.5rem; /* grows relative to root */
 }
 ```
+
+---
+
+## Font
+
+Using fonts effectively on the web requires choosing appropriate fallback fonts, importing external fonts when necessary, and ensuring readable spacing through proper `line-height` values.
+
+### Font Families & Fallbacks
+When setting a font, always provide a fallback list. This ensures your text remains readable if the primary font fails to load.
+
+```css
+body {
+    font-family: "Roboto", "Segoe UI", sans-serif;
+}
+```
+
+### Importing Web Fonts
+If you want to use a font the user may not have installed locally, include an `@import` statement **at the top of your CSS file**, or load it using a `<link>` tag in the HTML `<head>`.
+
+```css
+@import url('TheUrlOfTheFont');
+
+body {
+    font-family: 'imported-font', Arial, sans-serif;
+}
+```
+
+### Line Height
+For readability, line-height should be approximately **150% of the font size of the parent element**.
+
+```css
+html {
+    font-size: 18px;
+}
+
+p {
+    font-size: 1.5rem;
+    /* Or */
+    font-size: 1.5em;
+}
