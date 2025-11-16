@@ -2,6 +2,35 @@
 
 CSS information and best practices while following the "Web Development Mastercourse" on [IAmTimCorey.com](https://www.iamtimcorey.com/).
 
+---
+
+## Table Of Contents
+
+- [Selectors](#selectors)
+    - [ID Selectors](#id-selectors)
+    - [Class Selectors](#class-selectors)
+- [Sizing](#sizing)
+    - [Fixed Sizing](#fixed-sizing)
+    - [Responsive Sizing](#responsive-sizing)
+- [Font](#font)
+    - [Font Families & Fallbacks](#font-families--fallbacks)
+    - [Importing Web Fonts](#importing-web-fonts)
+    - [Line Height](#line-height)
+- [Color](#color)
+    - [Accessibility Tools](#accessibility-tools)
+    - [Color Formats](#color-formats)
+        - [Named Colors](#named-colors)
+        - [Hexadecimal Colors](#hexadecimal-colors)
+        - [RGB / RGBA](#rgb--rgba)
+        - [HSL / HSLA](#hsl--hsla)
+- [Text Formatting](#text-formatting)
+    - [Text Alignment](#text-alignment)
+    - [Text Transformation](#text-transformation)
+    - [Text Indentation](#text-indentation)
+    - [Text Decoration](#text-decoration)
+
+---
+
 ## Selectors
 
 CSS selectors determine **which HTML elements** a style applies to. Two of the most common selectors are **IDs** and **classes**.
@@ -17,6 +46,7 @@ An `id` is a **unique identifier** that should be used **only once per page**.
     color: steelblue;
 }
 ```
+
 
 ### Class Selectors
 A `class` is a **reusable style** that can be applied to **multiple** elements.
@@ -104,6 +134,111 @@ html {
 
 p {
     font-size: 1.5rem;
-    /* Or */
+    /* or */
     font-size: 1.5em;
 }
+```
+
+---
+
+## Color
+
+Color in CSS should be used to enhance **clarity**, **readability**, and **accessibility**. When choosing colors, always consider how they will appear to users with visual impairments such as color blindness.
+
+### Accessibility Tools
+A few tools commonly used to verify color contrast and accessibility:
+
+- [**WebAIM Contrast Checker**](https://webaim.org/resources/contrastchecker/)
+- [**Toptal Colorblind Web Page Filter**](https://www.toptal.com/designers/colorfilter)
+- [**Contrast Ratio Tool (Lea Verou)**](https://contrast-ratio.com/)
+
+These tools help confirm that foreground and background colors meet **WCAG** accessibility standards.
+
+---
+
+## Color Formats
+
+CSS supports several ways to define color, ranging from simple named colors to highly customizable numeric formats.
+
+### Named Colors
+Basic predefined color names like `red`, `blue`, `black`, etc.
+
+```css
+p {
+    color: red;
+}
+```
+
+### Hexadecimal Colors
+A 6-digit or 3-digit hexadecimal value representing **red**, **green**, and **blue**.
+
+```css
+h2 {
+    color: #0080ff; /* light blue */
+    color: #013; /* deep blue */
+}
+```
+
+### RGB / RGBA
+Uses numeric values for **red**, **green**, **blue** and optional **alpha** for transparency.
+
+```css
+button {
+    color: hsl(210, 90%, 55%); /* no alpha */
+    color: hsla(210, 90%, 55%, 0.7) /* with alpha */
+}
+```
+
+---
+
+## Text Formatting
+
+Text formatting is CSS allows your to **enhance readability and emphasize content** by *controlling*, *alignment*, *transformation*, *indentation*, and *decoration*.
+
+### Text Alignment
+You can align text horizontally within its container using `text-align`.
+
+```css
+p {
+    text-align: left; /* default, aligns to the left */
+    text-align: center; /* centers text */
+    text-align: right; /* aligns to the right */
+    text-align: justify; /* spreads text evenly across the line */
+}
+```
+
+### Text Transformation
+Modify the capitalization of text using `text-transform`.
+
+```css
+h1 {
+    text-transform: uppercase; /* ALL LETTERS UPPERCASE */
+    text-transform: lowercase; /* all letters lowercase */
+    text-transform: capitalize; /* First Letter Of Each Word Capitalized */
+}
+```
+
+### Text Indentation
+Control horizontal spacing at the beginning of a paragraph using `text-indent`.
+
+```css
+p {
+    text-indent: 2em; /* equivalent to 2 times the font size */
+}
+```
+
+### Text Decoration
+Decorate text for emphasis or stylistic purposes with `text-decoration` and relation properties.
+
+```css
+h1 {
+    text-decoration-line: underline; /* adds underline */
+    text-decoration-color: rgba(75, 183, 95, 0.8);
+    text-decoration-style: dashed; /* changes underline from solid which is the default to dashes */
+
+    /* there is also a shorthand attribute */
+    text-decoration: <line> <color> <style>;
+}
+```
+
+---
