@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Zen+Dots&display=swap');
+
 html {
-    font-size: 18px;
+    font-size: 16px;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.5rem;
 }
 
 h1 {
-    font-size: 3rem;
-}
-
-span {
-    font-size: 70px;
+    font-size: 2rem;
+    font-family: 'Zen Dots', serif;
 }
 
 .starting-character {
-    font-size: 3em;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .starting-character.first-overall-character {
@@ -24,4 +26,5 @@ span {
 
 footer.sample-copy {
     color: red;
+    font-style: italic;
 }
