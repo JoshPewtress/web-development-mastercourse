@@ -12,6 +12,11 @@ h1, h2 {
     font-weight: 600;
 }
 
+h1 {
+    text-align: center;
+    text-decoration: underline solid rgba(1, 1, 56, 0.7);
+}
+
 h2 {
     font-size: 1.5em;
 }
@@ -20,10 +25,18 @@ h2 {
     font-weight: bold;
 }
 
+section.topics-section h2 {
+    text-indent: 1rem;
+}
+
 ul.topics {
     list-style: none;
     margin: 0 1em;
     padding: 0;
+}
+
+ul.topics li {
+    text-decoration: underline solid black;
 }
 
 .topic-title {
@@ -43,8 +56,17 @@ label {
 footer {
     font-style: italic;
     font-size: .8rem;
+    text-indent: 2rem;
 }
 
 table {
+    text-align: center;
+}
+
+caption {
+    font-size: 1.5rem;
+}
+
+form {
     text-align: center;
 }
