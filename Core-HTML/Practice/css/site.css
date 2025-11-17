@@ -6,6 +6,22 @@ html {
     font-family: 'IBM Plex Serif', serif;
 }
 
+nav ul li {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+}
+
+figure img {
+    width: 95%;
+}
+
+figcaption {
+    font-size: .8em;
+    font-style: italic;
+    line-height: .5rem;
+}
+
 h1, h2 {
     font-size: 2em;
     font-family: Montserrat, sans-serif;
@@ -21,8 +37,34 @@ h2 {
     font-size: 1.5em;
 }
 
+table {
+    text-align: center;
+}
+
+caption {
+    font-size: 1.5rem;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+footer {
+    font-style: italic;
+    font-size: .8rem;
+    text-indent: 2rem;
+}
+
 .bold {
     font-weight: bold;
+}
+
+.centered {
+    text-align: center;
 }
 
 section.topics-section h2 {
@@ -42,31 +84,4 @@ ul.topics li {
 .topic-title {
     font-family: Montserrat, sans-serif;
     font-weight: 500;
-}
-
-figcaption {
-    font-size: .8em;
-    font-style: italic;
-}
-
-label {
-    font-weight: bold;
-}
-
-footer {
-    font-style: italic;
-    font-size: .8rem;
-    text-indent: 2rem;
-}
-
-table {
-    text-align: center;
-}
-
-caption {
-    font-size: 1.5rem;
-}
-
-form {
-    text-align: center;
 }
