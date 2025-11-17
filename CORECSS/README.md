@@ -28,6 +28,12 @@ CSS information and best practices while following the "Web Development Masterco
     - [Text Transformation](#text-transformation)
     - [Text Indentation](#text-indentation)
     - [Text Decoration](#text-decoration)
+- [Visibility & Display](#visibility--display)
+    - [Visibility](#visibility)
+    - [Display](#display)
+        - [Block](#block)
+        - [Inline](#inline)
+        - [Inline-Block](#inline-block)
 
 ---
 
@@ -251,6 +257,69 @@ h1 {
 
     /* there is also a shorthand attribute */
     text-decoration: <line> <color> <style>;
+}
+```
+
+---
+
+## Visibility & Display
+
+CSS provides properties to control whether elements are **visible** and how they **take up space** on a page. These properties are fundamental for layout design.
+
+### Visibility
+The `visibility` property controls whether an element is visible or hidden.
+
+- **Values:**
+    - `visible` - default, the element is shown.
+    - `hidden` - element is hidden but still occupies space.
+    - `collapse` - primarily used for table elements. Hides the element and removes it from the layout.
+
+```css
+p {
+    visibility: visible; /* element is shown */
+    visibility: hidden; /* element is invisible but space is preserved */
+}
+```
+
+---
+
+### Display
+The `display` property controls how an element is rendered in the flow of the document.
+
+#### **Block**
+
+- Takes the **full width** available by default.
+- Starts on a **new line**.
+- Examples: `<div>`, `<p>`, `<h1>`.
+
+```css
+div {
+    display: block;
+}
+```
+
+#### **Inline**
+
+- Takes only as much width and height as needed to display the content.
+- Does **not start on a new line.**
+- Examples: `<span>`, `<a>`, `<strong>`.
+
+```css
+span {
+    display: inline;
+}
+```
+
+#### **Inline-Block**
+
+- Behaves like **block** in that you can set width and height.
+- Behaves like **inline** in that other elements can sit beside it.
+
+```css
+button {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
 }
 ```
 
