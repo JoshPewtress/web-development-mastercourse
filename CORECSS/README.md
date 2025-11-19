@@ -34,6 +34,11 @@ CSS information and best practices while following the "Web Development Masterco
         - [Block](#block)
         - [Inline](#inline)
         - [Inline-Block](#inline-block)
+- [Spacing](#spacing)
+    - [Margin](#margin)
+    - [Border](#border)
+    - [Padding](#padding)
+    - [The Box Model](#the-box-model)
 
 ---
 
@@ -321,6 +326,87 @@ button {
     width: 150px;
     height: 50px;
 }
+```
+
+---
+
+## Spacing
+
+Spacing in CSS refers to the use of whitespace to control how elements are positioned and sized within a layout. Every element is made up of four key parts that form the **box model**: **content**, **padding**, **border**, and **margin**. Understanding these layers is essential for accurately controlling an element's total space on a page.
+
+### Margin
+`margin` adds whitespace **outside** an element's border. It pushes the element away from surrounding elements.
+
+Margins can be set individually or using shorthand:
+
+```css
+h1 {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+
+    /* shorthand example */
+    margin: 10px; /* all sides */
+    margin: 10px 20px; /* top/bottom - left/right */
+    margin: 5px 10px 15px 20px; /* top - right - bottom - left */
+}
+```
+
+### Border
+The `border` wraps around the padding and content. Borders can be styled with a width, color, and line style.
+
+```css
+div {
+    border: 2px solid black;
+    border-radius: 6px; /* optional: rounded corners */
+}
+
+/* you can also customize each side separately */
+
+div {
+    border-top: 3px dashed red;
+    border-bottom: 1px solid gray;
+}
+```
+
+### Padding
+`padding` adds whitespace **inside** the border, creating space between the content and the border.
+
+Like margin it can be set individually or with shorthand:
+
+```css
+.class-name {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+
+    /* shorthand */
+    padding: 10px; /* all sides */
+    padding: 10px 20px; /* top/bottom - left/right */
+    padding: 5px 10px 15px 20px; /* top - right - bottom - left */
+}
+```
+
+### The Box Model
+To calculate how much space an element occupies, you must consider **all four layers**.
+
+For example, an element with:
+
+- width: 200px
+- padding: 10px
+- border: 2px
+- margin: 20px
+
+...will take up **244px** of horizontal space:
+
+```html
+200 (content)
++ 10 + 10 (padding)
++ 2 + 2 (border)
++ 20 + 20 (margin)
+= 244px total
 ```
 
 ---
