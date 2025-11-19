@@ -46,6 +46,15 @@ footer.sample-copy {
 .ninja {
     /* visibility: hidden; */
     /* display: none; */
+    border: 1px solid black;
     display: inline-block;
-    width: 30%;
+    width: 25%;
+    min-width: 100px;
+    /* padding: 15px; */
+    padding-left: 15px;
+    margin: 10px 5px 10px 0;
+}
+
+.ninja.better {
+    min-height: 300px;
 }
