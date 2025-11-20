@@ -89,6 +89,13 @@ footer {
 section.topics-section h2 {
     text-indent: .5rem;
     margin-top: 2.5rem;
+    display: flow-root;
+}
+
+.html-css-logo-img {
+    width: 4%;
+    min-width: 34px;
+    float: left;
 }
 
 ul.topics {
