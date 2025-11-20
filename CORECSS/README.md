@@ -39,6 +39,10 @@ CSS information and best practices while following the "Web Development Masterco
     - [Border](#border)
     - [Padding](#padding)
     - [The Box Model](#the-box-model)
+- [Image Positioning (float)](#image-positioning-float)
+    - [Floating an Image](#floating-an-image)
+    - [Preventing Overflow](#preventing-overflow)
+    - [When to Use Float](#when-to-use-float)
 
 ---
 
@@ -408,5 +412,54 @@ For example, an element with:
 + 20 + 20 (margin)
 = 244px total
 ```
+
+---
+
+## Image Positioning (Float)
+
+The `float` property allows text to wrap around an element, most commonly an image. This technique is useful for creating magazine-style layouts or placing an image to the left or right of accompanying text.
+
+### Floating an Image
+To wrap text around an image, apply `float` to the image and ensure it has a defined width so the text knows how much space to flow around.
+
+The available float values are:
+
+- `left` - moves the image to the left, text wraps on the right.
+- `right` - moves the image to the right, text wraps on the left.
+- `none` - default, no wrapping
+
+```css
+.img-name {
+    float: left; /* or right */
+    width: 30%; /* responsive sizing */
+}
+```
+
+---
+
+### Preventing Overflow
+When floating elements inside a container, the container may **collapse** because floated elements are taken out of normal flow.
+
+To ensure the parent container expands properly around the image and text, apply: 
+
+```css
+.parent-container {
+    display: flow-root;
+}
+```
+
+`flow-root` creates a new block formatting context, preventing floats from escaping their container.  
+This serves as a modern, cleaner alternative to older clearfix hacks.
+
+---
+
+### When to Use Float
+Float is primarily used for:
+
+- Wrapping text around images.
+- Simple inline image layout inside paragraphs
+- Legacy layout compatibility
+
+**Float should NOT be used for general layout**. Float is now a **specialized tool**, best reserved for images and text wrapping scenarios.
 
 ---
