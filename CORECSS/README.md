@@ -43,6 +43,10 @@ CSS information and best practices while following the "Web Development Masterco
     - [Floating an Image](#floating-an-image)
     - [Preventing Overflow](#preventing-overflow)
     - [When to Use Float](#when-to-use-float)
+- [Cascade, Priority & Specificity](#cascade-priority--specificity)
+    - [Cascade Priority](#cascade-priority-source-order)
+    - [Specificity](#specificity)
+    - [Specificity Scoring](#specificity-scoring)
 
 ---
 
@@ -461,5 +465,76 @@ Float is primarily used for:
 - Legacy layout compatibility
 
 **Float should NOT be used for general layout**. Float is now a **specialized tool**, best reserved for images and text wrapping scenarios.
+
+---
+
+## Cascade, Priority & Specificity
+
+CSS is govered by the **cascade**, which determines which styles are applied when multiple rules target the same element. The final result is based on three main factors:
+
+1. **Source order (priority)** - rules that appear later override earlier ones
+2. **Specificity** - more specific selectors override less specific ones
+3. **Importance** (`!important`) - the highest level of force (used sparingly)
+
+### Cascade Priority (Source Order)
+When two rules have **equal specificity**, the one that appears **later** wins.
+
+Example with multiple stylesheets:
+
+- Stylesheet 1 (loaded first)
+- Stylesheet 2
+- **Stylesheet 3 (loaded last - highest priority)**
+
+```css
+/* stylesheet 1 */
+.class-name {
+    font-size: 5px;
+    color: blue;
+}
+
+/* stylesheet 3 */
+.class-name {
+    font-size: 10px;
+}
+```
+
+Result:
+
+- `font-size` - **10px** (overridden by later stylesheet)
+- `color` - **blue** (was never overridden)
+
+The later the stylesheet appears in `<head>`, **the more** priority it has.
+
+---
+
+### Specificity
+Specificity determines which selector is **more powerful**.  
+From lowest to highest:
+
+1. Element selectors (`p`, `span`, `h1`)
+2. Class selectors (`.button`, `.active`)
+3. ID selectors (`#header`)
+4. Inline styles (`style="color: red"`)
+
+The browser compares specificity levels to decide the winner.
+
+---
+
+### Specificity Scoring
+Browsers calculate specificity like a 4-part number:
+
+| Type             | Example          | Specificity   |
+| :--------------- | :--------------- | :-----------: |
+| Inline Style | `style="..."` | 1,0,0,0  |
+| ID selector | `#id-name` | 0,1,0,0 |
+| Class selector | `.class`, `[attr]` | 0,0,1,0 |
+| Element selector | `p`, `div` | 0,0,0,1 |
+
+When comparing:
+
+- `.class-name` - **0,0,1,0**
+- `.class-name .another-class-name` - **0,0,2,0** (*more specific*)
+
+**More classes in a selector** = **higher specificity**.
 
 ---
