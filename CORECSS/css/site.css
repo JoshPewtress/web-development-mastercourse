@@ -47,7 +47,7 @@ footer.sample-copy {
 .ninja {
     /* visibility: hidden; */
     /* display: none; */
-    border: 1px solid black;
+    border: 5px dotted red;
     display: inline-block;
     width: 25%;
     min-width: 100px;
