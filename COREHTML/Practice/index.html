@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <!-- If you are reading this, you know how to find code comments. -->
+        <meta charset="UTF-8">
         <title>HTML Practice Page</title>
         <link rel="icon" href="../Learning/favicon.ico" />
         <link rel="stylesheet" href="css/site.css">
@@ -171,6 +172,28 @@
                 </section>
                 <section class="topics-section">
                     <h2>
+                        <img class="section-img" src="images/JS-Logo.png" alt="Javascript logo">
+                        JavaScript Topics Covered:
+                    </h2>
+                    <div>
+                        <ul class="topics">
+                            <li>
+                                <span class="topic-title">Script Tag</span>
+                                <p class="topic-description">
+                                    Placing JavaScript in the HTML using the <code>&lt;script&gt;</code> tag, commonly placed before the closing <code>&lt;/body&gt;</code> tag for performance
+                                </p>
+                            </li>
+                            <li>
+                                <span class="topic-title">console.log</span>
+                                <p class="topic-description">
+                                    Printing information to the console using browser developer tools
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="topics-section">
+                    <h2>
                         <img class="section-img" src="images/deploy-logo.png" 
                             alt="Deploy website icon">
                         Deploying Websites:
@@ -209,5 +232,8 @@
         <footer>
             &copy; Josh Pewtress, All Rights Reserved
         </footer>
+        <script>
+            console.log('Practicing the script tag');
+        </script>
     </body>
 </html>
