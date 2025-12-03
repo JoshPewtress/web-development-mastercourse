@@ -1,7 +1,21 @@
-const cString = 'This is a const variable and cannot be altered.';
-let lString = 'Placeholder';
-lString = 'This is a let variable and was changed after declaration';
+let todaysDate = new Date(Date.now())
+
+const firstName = 'Josh';
+const lastName = 'Pewtress';
+
+let x = 3;
+let y = 5;
+let result = x;
+
+let isJavaScript = true;
 
 
-console.log(cString);
-console.log(lString);
+console.log(`${todaysDate.toDateString()}`);
+
+console.log(`My name is: ${firstName} ${lastName}.`);
+
+result **= x;
+
+console.log(result);
+
+console.log(!isJavaScript);
