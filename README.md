@@ -27,7 +27,7 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
 
 ## Project Structure
 
-```css
+```md
 /
 ├── COREHTML/     — HTML fundamentals & notes
 |   ├── Learn     — Basic Project with learning examples
