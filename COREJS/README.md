@@ -11,6 +11,11 @@ JavaScript concepts and best practices learned while following the "Web Developm
     - [External Script](#external-script)
 - [Console Output](#console-output)
     - [console.log](#consolelog)
+- [Variables](#variables)
+    - [var](#var)
+        - [Hoisting Example](#hoisting-example)
+    - [let](#let)
+    - [const](#const)
 
 ---
 
@@ -62,5 +67,85 @@ console.log("This is a message.");
 ```
 
 To access the **Console** open the browser's developer tools (F12) and select the console tab to see the output.
+
+---
+
+## Variables
+
+Variables in JavaScript are used to store values.  
+There are three ways to declare variables: `var`, `let`, and `const`.  
+Each behaves differently and has specific use cases.
+
+### var
+`var` is the oldest way to declare a variable. It is **function-scoped** and allows **redeclaration**. It should generally be avoided in modern JavaScript due to confusing behavior such as **hoisting**.
+
+```js
+var total = 10;
+var total = 20; // allowed, but not recommended
+```
+
+### Hoisting Example
+
+```js
+console.log(x); // undefined, but no error
+var x = 5;
+```
+
+The variable is "hoisted" to the top of its scope, but its value is not.
+
+---
+
+### let
+`let` is the recommended way to declare variables that may change over time.
+
+- **Block-scoped** (contained within `{}`)
+- **Cannot** be redeclared in the same scope
+- **Can** be reassigned
+
+```js
+let count = 1;
+count = 2; // allowed
+```
+
+Example showing block scope:
+
+```js
+let value = 10;
+
+{
+    let value = 20; // separate variable, only inside the braces
+    console.log(value); //20
+}
+
+console.log(value);
+```
+
+---
+
+### const
+`const` is used for **variables that should never be reassigned**.
+
+- Must be given a value at declaration
+- Cannot be reassigned
+- Still block-scoped like `let`
+
+```js
+contst pi = 3.14159;
+```
+
+Attempting to change it:
+
+```js
+pi = 4; // Error: Assignment to constant variables
+```
+
+Note:  
+If the value is an **object or array**, the contents can change, but the variable name cannot be reassigned.
+
+```js
+const person = { name: "Josh" };
+person.name = "Josh"; // allowed
+person = {}; // not allowed
+```
 
 ---
