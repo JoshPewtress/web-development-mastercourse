@@ -1,19 +1,28 @@
 const pets = ['Andy', 'Maisie', 'Luna', 'Trixie'];
 
-// for (let i = 0; i < pets.length; i++) {
-//     console.log(pets[i]);
-// }
+const filtered = pets.filter(p => p.substring(0, 1) === 'M');
 
-// for (const pet of pets) {
-//     console.log(pet);
-// }
+console.log(filtered);
 
-// pets.forEach(function(pet) {
-//     console.log(pet);
-// });
+const morePets = ['Moona', 'Mixie', 'Maan'];
 
-// let count = 0;
-// while (count < pets.length) {
-//     console.log(pets.pop());
-//     count++;
-// }
+morePets.forEach(p => pets.push(p));
+
+console.log(pets);
+
+pets.pop();
+pets.pop();
+
+console.log(pets);
+
+const foods = ['Pizza', 'Chicken', 'Rice'];
+
+function goodFood(foodName) {
+    if (foods.includes(foodName)) {
+        console.log('Thats a good food');
+    } else {
+        console.log('Gross food');
+    }
+}
+
+goodFood('Rice');
