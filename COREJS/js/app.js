@@ -1,32 +1,41 @@
-const people = ['Tim', 'Sue', 'Mary', 'Bob'];
+// const firstName = 'Tim';
+// const middleName = 'Guess';
+// const lastName = 'Corey';
 
-people.push('Greg');
-const lastPerson = people.pop();
+// // if (firstName.toLowerCase() == 'tim') {
+// if (firstName === 'Tim' && lastName === 'Corey') {
+//     console.log('Hello teacher');
+// } else if (firstName === 'Tim') {
+//     console.log('Hello other Tim');
+// }else if (lastName === 'Corey') {
+//     console.log('Cool last name');
+// } else {
+//     console.log('Hello student');
+// }
 
-// console.log(people);
+// if ((firstName === 'Tim' || lastName === 'Corey') && middleName === 'Guess') {
+//     console.log('That\'s a pretty cool name');
+// }
 
-// console.log(people.indexOf('Tom'));
+// const x = '1';
+// const y = 1;
 
-// console.log(Array.isArray(people));
+// if (x === y) {
+//     console.log('The two values are equal');
+// }
 
-// console.log(lastPerson.startsWith('G'));
+// == is a value comparison like comparing strings
 
-people.push('Tom');
-people.push('Tammy');
-people.push('Barry');
+const day = 'Frubs';
 
-const coolPeople = people.filter(function(person) {
-    return person.startsWith('T');
-});
-
-console.log(coolPeople);
-console.log(people);
-
-console.log(lastPerson.substring(0, 1));
-
-const firstLetters = people.map(function(_) {
-    return _.substring(0, 1);
-});
-
-console.log(firstLetters);
-
+switch (day) {
+    case 'Monday':
+        console.log('That is Monday');
+        break;
+    case 'Tuesday':
+        console.log('It\'s Tuesday');
+        break;
+    default:
+        console.log('I do not know what day of the week that is');
+        break;
+}

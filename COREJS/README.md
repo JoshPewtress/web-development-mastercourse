@@ -24,6 +24,11 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Adding and Removing items](#adding--removing-items)
   - [Filtering](#filtering-arrays)
   - [Substrings](#substrings)
+- [Conditionals](#conditionals)
+  - [If, Else If, and Else](#if-else-if-and-else)
+  - [Logical Operators](#logical-operators-and--or)
+  - [Equality Operators](#equality-operators--vs)
+  - [Switch Statements](#switch-statements)
 
 ---
 
@@ -342,5 +347,116 @@ const part = word.substring(4, 10);
 
 console.log(part); // 'Script'
 ```
+
+---
+
+## Conditionals
+
+Conditionals allow JavaScript to make decisions based on whether something is true or false.  
+They enable branching logic in your code so different actions happen under different conditions.
+
+---
+
+### If, Else If, and Else
+
+The most common conditional structure is the `if / else if / else` chain.
+
+```js
+let temperature = 70;
+
+if (temperature > 80) {
+    console.log("It's hot!");
+} else if (temperature > 60) {
+    console.log("It's warm.");
+} else {
+    console.log("It's cold.");
+}
+```
+
+- `if` runs only when its condition is true  
+- `else if` provides additional checks  
+- `else` runs if no previous condition was true  
+
+---
+
+### Logical Operators (AND &&, OR ||)
+
+Logical operators allow combining multiple conditions.
+
+#### AND (&&)
+Both conditions must be true.
+
+```js
+let age = 25;
+let hasID = true;
+
+if (age >= 18 && hasID) {
+    console.log("You may enter.");
+}
+```
+
+#### OR (||)
+At least one condition must be true.
+
+```js
+let hasKey = false;
+let knowsCode = true;
+
+if (hasKey || knowsCode) {
+    console.log("You may enter.");
+}
+```
+
+---
+
+### Equality Operators: `==` vs `===`
+
+#### `==` — *Loose Equality*
+- Converts the values to the same type before comparing  
+- `"1" == 1` → true  
+- `"true" == 1` → false  
+
+#### `===` — *Strict Equality*
+- No type conversion  
+- Values must be exactly the same type *and* value  
+- `"1" === 1` → false  
+- `1 === 1` → true  
+
+**Always prefer `===`** in real-world code because it's predictable and avoids hidden type conversions.
+
+```js
+console.log("1" == 1);  // true  (string converted to number)
+console.log("1" === 1); // false (different types)
+```
+
+---
+
+### Switch Statements
+
+A `switch` statement checks one value against several possible cases.
+
+```js
+let color = "red";
+
+switch (color) {
+    case "red":
+        console.log("Stop!");
+        break;
+
+    case "yellow":
+        console.log("Slow down.");
+        break;
+
+    case "green":
+        console.log("Go!");
+        break;
+
+    default:
+        console.log("Invalid color.");
+}
+```
+
+- `break` prevents fall-through  
+- `default` handles unmatched cases  
 
 ---
