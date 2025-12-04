@@ -59,7 +59,7 @@ This structure makes it easy to revisit concepts as projects become more complex
 | :----- | :------ |
 | COREHTML | Tags, structure, debugging, page setup |
 | CORECSS | Selectors, sizing, fonts, colors, spacing, float, specificity |
-| COREJS | Script tag, console output, variables |
+| COREJS | Script tag, console output, variables, Arrays |
 | WEBACCESSIBILITY | Semantic HTML, ARIA-labels |
 
 I update these sections as I learn new material and apply it in practice projects.

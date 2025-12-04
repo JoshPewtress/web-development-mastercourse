@@ -1,21 +1,22 @@
-let todaysDate = new Date(Date.now())
+const testArray = ['First', 'Second', 'Third'];
 
-const firstName = 'Josh';
-const lastName = 'Pewtress';
+console.log(testArray);
 
-let x = 3;
-let y = 5;
-let result = x;
+testArray.push('Fourth');
+testArray.push('Fifth');
 
-let isJavaScript = true;
+console.log(testArray);
 
+const startsWithF = testArray.filter(function(_) {
+    return _.startsWith('F');
+});
 
-console.log(`${todaysDate.toDateString()}`);
+console.log(startsWithF);
 
-console.log(`My name is: ${firstName} ${lastName}.`);
+const poped = testArray.pop();
 
-result **= x;
+const newStartsWithF = testArray.filter(function(_) {
+    return _.startsWith('F');
+});
 
-console.log(result);
-
-console.log(!isJavaScript);
+console.log(poped == 'Fifth');
