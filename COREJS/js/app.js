@@ -1,34 +1,32 @@
-let x = 1;
-let y = 2;
-let result = 5;
+const people = ['Tim', 'Sue', 'Mary', 'Bob'];
 
-// result = x + y;
-// result += x;
-// result += y;
+people.push('Greg');
+const lastPerson = people.pop();
 
-// result++;
+// console.log(people);
 
-/* + - / * ** */
-// result *= 2;
-// result /= 2;
-// result **= 2;
+// console.log(people.indexOf('Tom'));
 
-// console.log(result);
+// console.log(Array.isArray(people));
 
-// let isAlive = true;
+// console.log(lastPerson.startsWith('G'));
 
-// isAlive =  false;
-// isAlive = !isAlive
+people.push('Tom');
+people.push('Tammy');
+people.push('Barry');
 
-// console.log(!isAlive);
-// console.log(isAlive);
+const coolPeople = people.filter(function(person) {
+    return person.startsWith('T');
+});
 
-// let birthday = new Date(1990, 8, 15, 0, 0, 0);
-// console.log(birthday);
+console.log(coolPeople);
+console.log(people);
 
-const firstName = 'Josh';
-const lastName = 'Pewtress';
+console.log(lastPerson.substring(0, 1));
 
-// console.log(firstName + ' ' + lastName);
-console.log(`Hello ${firstName} ${lastName}, my name is Bob.`);
+const firstLetters = people.map(function(_) {
+    return _.substring(0, 1);
+});
+
+console.log(firstLetters);
 

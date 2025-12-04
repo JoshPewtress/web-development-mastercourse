@@ -16,10 +16,14 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [let](#let)
   - [const](#const)
 - [Working With Variables](#working-with-variables)
-    - [Dates](#dates)
-    - [Arithmetic](#arithmetic)
-    - [String Interpolation](#string-interpolation-template-literals)
-    - [Boolean Inversion](#boolean-inversion--operator)
+  - [Dates](#dates)
+  - [Arithmetic](#arithmetic)
+  - [String Interpolation](#string-interpolation-template-literals)
+  - [Boolean Inversion](#boolean-inversion--operator)
+- [Arrays](#arrays)
+  - [Adding and Removing items](#adding--removing-items)
+  - [Filtering](#filtering-arrays)
+  - [Substrings](#substrings)
 
 ---
 
@@ -227,7 +231,7 @@ Template literals allow you to embed variables and expressions inside strings us
 #### Example
 
 ```js
-const firstName = "Josh";
+const firstName = 'Josh';
 const age = 33;
 
 const message = `Hello, my name is ${firstName} and I am ${age} years old.`;
@@ -247,6 +251,96 @@ let isOnline = true;
 
 console.log(!isOnline); // false
 console.log(isOnline);  // true
+```
+
+---
+
+## Arrays
+
+Arrays allow you to store multiple values inside a single variable.  
+They are ordered, zero-indexed collections where each item can be accessed, modified, added to, or removed.
+
+### Creating an Array
+
+```js
+const items = ['First', 'Second', 'Third'];
+```
+
+### Accessing Items (Indexing)
+
+Array indexes start at **0**, meaning:
+
+- `array[0]` → first item  
+- `array[1]` → second item  
+- `array[2]` → third item  
+
+Example:
+
+```js
+console.log(items[1]); // "Second"
+```
+
+---
+
+### Adding & Removing Items
+
+- `.push()` — Adds to the end of the array
+
+```js
+items.push('Fourth');
+console.log(items); 
+// ['First', 'Second', 'Third', 'Fourth']
+```
+
+- `.pop()` — Remove from the End
+  - The poped value can be stored in a variable
+
+```js
+const removed = items.pop();
+console.log(removed); // 'Fourth'
+console.log(items);   // ['First', 'Second', 'Third']
+```
+
+---
+
+### Filtering Arrays
+
+`.filter()` allows you to create a **new array** that includes only the elements that pass a test you define.
+
+The pattern looks like:
+
+```js
+array.filter(function(item) {
+    return /* boolean returning method */;
+});
+```
+
+Example filtering by string length:
+
+```js
+const longWords = items.filter(function(word) {
+    return word.length > 5;
+});
+
+console.log(longWords); // returns 'Second'
+```
+
+This does **not** change the original array—filtering always returns a **new** one.
+
+---
+
+### Substrings
+
+Strings inside arrays (or alone) can be cut using the `.substring(start, end)` method.
+
+- `start` is inclusive  
+- `end` is exclusive
+
+```js
+const word = "JavaScript";
+const part = word.substring(4, 10);
+
+console.log(part); // 'Script'
 ```
 
 ---
