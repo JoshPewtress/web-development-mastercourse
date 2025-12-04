@@ -34,6 +34,10 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [For...of Loop](#forof-loop)
   - [Array.forEach()](#arrayforeach)
   - [While Loop](#while-loop)
+- [Functions](#functions)
+  - [Function Declarations](#function-declarations)
+  - [Arrow Functions](#arrow-functions)
+  - [Callback Functions](#callback-functions)
 
 ---
 
@@ -536,3 +540,67 @@ while (count < 3) {
 ```
 
 Be careful. If you forget to update the counter, you create an **infinite loop**.
+
+---
+
+## Functions
+
+Functions allow you to **encapsulate reusable logic** so you can run the same code multiple times without rewriting it.
+
+They can accept **parameters**, perform work, and optionally **return** values.
+
+JavaScript supports multiple ways to define functions, but the two you've learned so far are:
+
+- **Function Declarations** (traditional syntax)
+- **Arrow Functions** (the modern best practice in most cases)
+
+### Function Declarations
+A function declaration uses the `function` keyword and creates a named, reusable block of code.
+
+```js
+function greet(name) {
+  return `Hello, ${name}`;
+}
+
+console.log(greet('Josh'));
+```
+
+Function declarations:
+
+- Can be called **before or after** they appear in the code (they are hoisted)
+- Are useful when naming the function and improves readability
+
+---
+
+### Arrow Functions (`=>`)
+An **arrow functions** is a shorter, modern way to write a function.
+
+It is commonly used because it reduces boilerplate and improves clarity.
+
+Equivalent arrow function for the example above:
+
+```js
+const greet = (name) => {
+  return `Hello, ${name}!`;
+}
+```
+
+If a function returns something immediately, you can shorten it even more:
+
+```js
+const greet = name => `Hello ${name}!`;
+```
+
+---
+
+### Callback Functions
+A callback is a function passed into another function.  
+Arrow functions make this especially clean.
+
+```js
+const numbers = [1, 2, 3];
+
+numbers.forEach(num => console.log(num * 2));
+```
+
+---
