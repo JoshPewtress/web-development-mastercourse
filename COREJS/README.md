@@ -29,6 +29,11 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Logical Operators](#logical-operators-and--or)
   - [Equality Operators](#equality-operators--vs)
   - [Switch Statements](#switch-statements)
+- [Loops](#loops)
+  - [For Loop](#for-loop)
+  - [For...of Loop](#forof-loop)
+  - [Array.forEach()](#arrayforeach)
+  - [While Loop](#while-loop)
 
 ---
 
@@ -460,3 +465,74 @@ switch (color) {
 - `default` handles unmatched cases  
 
 ---
+
+## Loops
+
+Loops allow you to repeat actions until a condition is met. They are commonly used to iterate over numbers, arrays, and other collections of data.
+
+JavaScript provides several types of loops, each with different use cases and levels of control.
+
+### For Loop
+A **for loop** runs a block of code a specific number of times and has three main parts:
+
+1. **Initializer** - usually declares a counter variable
+2. **Condition** - loop continues while this is true
+3. **Increment/Decrement** - updates the counter each iteration
+
+```js
+for (let i = 0; i < 5; i++) {
+  console.log(`Loop iteration: ${i}`);
+}
+```
+
+This loop starts at `0`, runs while `i < 5`, and stops once `i` becomes `5`.
+
+---
+
+### For...of Loop
+The **for...of loop** is a cleaner way to loop through **arrays** and other iterable collections.
+
+Instead of managing a counter, you directly access each element:
+
+```js
+const items = ['apple', 'banana', 'cherry'];
+
+for (const item of items) {
+  console.log(item);
+}
+```
+
+This loop continues automatically until all items are processed.
+
+---
+
+### Array.forEach()
+`.foreach()` is a method available on arrays that runs a function once per element.
+
+It behaves similarly to `for...of` but is written using a callback function.
+
+```js
+const items = ['apple', 'banana', 'cherry'];
+
+items.forEach(function(item) {
+  console.log(item);
+});
+```
+
+---
+
+### While Loop
+A **while loop** runs as long as its condition remains true.
+
+Unlike `for`, it does **not** automatically increment a counter, you must manage that yourself.
+
+```js
+let count = 0;
+
+while (count < 3) {
+  console.log(`Count: ${count}`);
+  count++;
+}
+```
+
+Be careful. If you forget to update the counter, you create an **infinite loop**.
