@@ -1,28 +1,37 @@
-const pets = ['Andy', 'Maisie', 'Luna', 'Trixie'];
+const family = {
+    husband: 'Josh',
+    wife: 'Brittany',
+    pets: {
+        andy: 'Dog',
+        maisie: 'Dog',
+        luna: 'Cat',
+        trixie: 'Cat'
+    },
+    listPets: function()  {
+        return `${this.pets.andy}, ${this.pets.maisie}, ${this.pets.luna}, ${this.pets.trixie}`;
+    }
+};
 
-const filtered = pets.filter(p => p.substring(0, 1) === 'M');
-
-console.log(filtered);
-
-const morePets = ['Moona', 'Mixie', 'Maan'];
-
-morePets.forEach(p => pets.push(p));
-
-console.log(pets);
-
-pets.pop();
-pets.pop();
-
-console.log(pets);
-
-const foods = ['Pizza', 'Chicken', 'Rice'];
-
-function goodFood(foodName) {
-    if (foods.includes(foodName)) {
-        console.log('Thats a good food');
-    } else {
-        console.log('Gross food');
+function listObject(obj) {
+    for (const key in obj) {
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            console.log(key + ':');
+            listObject(obj[key]);
+        } else if (typeof obj[key] === 'function') {
+            console.log(obj[key]());
+        } else {
+            console.log(`${key}: ${obj[key]}`);
+        }
     }
 }
 
-goodFood('Rice');
+listObject(family);
+
+const { pets: { andy } } = family;
+
+console.log(andy);
+
+const json = JSON.stringify(family);
+console.log(json);
+const reverted = JSON.parse(json);
+console.log(reverted);
