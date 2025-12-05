@@ -32,12 +32,20 @@ JavaScript concepts and best practices learned while following the "Web Developm
 - [Loops](#loops)
   - [For Loop](#for-loop)
   - [For...of Loop](#forof-loop)
+  - [For...in Loop](#forin-loop)
   - [Array.forEach()](#arrayforeach)
   - [While Loop](#while-loop)
 - [Functions](#functions)
   - [Function Declarations](#function-declarations)
   - [Arrow Functions](#arrow-functions)
   - [Callback Functions](#callback-functions)
+- [Objects](#objects)
+  - [Creating an Object](#creating-an-object)
+  - [Nested Objects](#nested-objects)
+  - [Nested Functions](#nested-functions)
+  - [Modifying Object Properties](#modifying-object-properties)
+  - [Destructuring](#destructuring)
+  - [JSON](#json)
 
 ---
 
@@ -510,8 +518,36 @@ This loop continues automatically until all items are processed.
 
 ---
 
+### For...in Loop
+The **for...in loop** iterates over the **keys (property names)** of an object.  
+This makes it useful for inspecting everything inside an object.
+
+```js
+const person = {
+  name: 'Josh',
+  age: 33,
+  job: 'Developer'
+};
+
+for (const key in person) {
+  console.log(`${key}: ${person[key]}`);
+}
+```
+
+Output:
+
+```js
+name: Josh
+age: 33
+job: Developer
+```
+
+`for...in` is primarily used with **objects**, not arrays.
+
+---
+
 ### Array.forEach()
-`.foreach()` is a method available on arrays that runs a function once per element.
+`.forEach()` is a method available on arrays that runs a function once per element.
 
 It behaves similarly to `for...of` but is written using a callback function.
 
@@ -601,6 +637,164 @@ Arrow functions make this especially clean.
 const numbers = [1, 2, 3];
 
 numbers.forEach(num => console.log(num * 2));
+```
+
+---
+
+## Objects
+
+Objects in JavaScript allow you to store related date and functionality together using **key/value pairs**. They are ideal for representing real world things such as users, products, settings, or game entities.
+
+You can also nest objects inside other objects and include functions within them.
+
+### Creating an Object
+Objects are declared using `{ }` and contain keys paired with values.
+
+```js
+const person = {
+  firstName: 'Josh',
+  lastName: 'Pewtress',
+  age: 31
+};
+
+console.log(person.firstName); // 'Josh'
+```
+
+Keys are string by default, and you access values with dot notation (`.`) or bracket notation (`['key']`).
+
+---
+
+### Nested Objects
+Objects can contain other objects to represent structured data.
+
+```js
+const user = {
+  name: 'Lavitz',
+  contact: {
+    email: 'Slambert@example.com',
+    phone: '123-4567'
+  },
+  job: 'Spearman'
+};
+
+console.log(user.contact.email);
+```
+
+---
+
+### Nested Functions
+Functions can be nested inside of objects.
+
+```js
+const calculator = {
+  add(a, b) {
+    return a + b;
+  },
+  multiply: (a, b) => a * b
+};
+
+console.log(calculator.add(1, 2));
+console.log(calculator.multiply(2, 3));
+```
+
+Both traditional function syntax and arrow functions can be used inside objects.
+
+---
+
+### Modifying Object Properties
+Even if an object is declared with `const`, its **contents** can change.
+
+```js
+const person = {
+  name: 'Josh',
+  age: 31
+};
+
+person.age = 32;
+person.name = 'Joosh';
+
+console.log(person);
+```
+
+You **cannot** reassign the entire object.
+
+```js
+person = {}; // Not allowed
+```
+
+---
+
+### Destructuring
+Destructuring allows you to extract properties from an object into standalone variables.    
+This can also be used with nested objects.
+
+```js
+const pizza = {
+  toppings: {
+    rightHalf: {
+      cheese: 'Parmesan',
+      meat: 'Bacon',
+      veggies: 'Black Olives'
+    },
+    leftHalf: {
+      meat: 'Pepperoni'
+    }
+  }
+};
+
+const { toppings: { rightHalf: { cheese: rightCheese }}} = pizza;
+
+console.log(rightCheese);
+```
+
+Syntax to rename a deconstructed property is `(property): (new name)`.
+
+---
+
+### JSON
+**JSON (JavaScript Object Notation)** is a lightweight data format used for storing and transferring data.  
+It looks very similar to JavaScript objects but follows strict rules:
+
+- Keys **must** be wrapped in double quotes
+- Strings must be **double quotes**
+- No trailing commas
+- Functions are **not** allowed
+
+JSON is commonly used when sending data to or receiving data from APIs.
+
+---
+
+#### Converting an Object to JSON
+Use `JSON.stringify()` to turn a JavaScript object into a JSON string.
+
+```js
+const person = {
+  name: 'Josh',
+  age: 31,
+  job: 'Developer'
+};
+
+const json = JSON.stringify(person);
+console.log(json);
+// '{"name":"Josh","age":31,"job":"Developer"}'
+```
+
+This is often necessary when:
+
+- Saving data to local storage
+- Sending data over the network
+- Logging structured information
+
+---
+
+#### Convering JSON Back into an Object
+Use `JSON.parse()` to convert JSON text back into a normal JavaScript object.
+
+```js
+const parsed = JSON.parse(json);
+
+console.log(parsed.name); // 'Josh'
+console.log(parsed.age); // 31
 ```
 
 ---

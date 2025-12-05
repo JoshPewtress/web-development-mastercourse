@@ -1,39 +1,90 @@
-function add(x = 2, y = 6) {
-    return x + y;
-}
+const person = {
+    firstName: 'Tim',
+    lastName: 'Corey',
+    age: 42,
+    isAlive: true,
+    // thisTest: this,
+    address: {
+        city: {
+            town: 'Dallas'
+        },
+        state: 'TX'
+    },
+    fullName: function() {
+        // console.log(this);
+        return `${this.firstName} ${this.lastName}`;
+    }
+};
 
-// let result = add(2,3);
-// console.log(result);
+// function test() {
+//     return this;
+// }
+// console.log(test());
 
-// result = add(4,5);
-// console.log(result);
 
-// console.log(add(2, 3));
+// person.firstName = 'Timothy';
+// person.address.country = 'USA';
 
-// const moreResults = add(3,8) + add(2,11);
-// console.log(moreResults);
+// console.log(person.fullName());
+// console.log(person.thisTest);
 
-// console.log(add());
-
-// function greetUser() {
-//     console.log('Hello user');
-//     console.log('Welcome to our website.');
-//     console.log('We hope you enjoy it.');
-
-//     console.log(`The value of 5 + 3 = ${add(5,3)}`)
+// function greetUser(p) {
+//     console.log(`Hello ${p.fullName()}`);
 // }
 
-// greetUser()
+// greetUser(person)
 
-const subtract = (x, y) => x - y;
+// Deconstructor
+// const { firstName:fn, age, address: { city: { town } } } = person;
 
-console.log(subtract(7, 3));
+// console.log(town);
 
-const people = ['Tim', 'Sue', 'Tammy'];
+// for (const key in person) {
+//     if (person.hasOwnProperty(key)) {
+//         console.log(`${key}: ${person[key]}`);
+//     }
+// }
 
-// const filtered = people.filter(p => p.substring(0, 1) === 'T');
-const filtered = people.filter(function(p) {
-    return p.substring(0,1) === 'T';
-})
+// JSON - JavaScript Object Notation
+// delete person.fullName;
 
-console.log(filtered);
+console.log(JSON.stringify(person));
+
+const receivedInfo = JSON.stringify(person);
+
+const parsedInfo = JSON.parse(receivedInfo);
+
+console.log(parsedInfo.firstName);
+
+// const user = {
+//   firstName: 'Dart',
+//   lastName: 'Feld',
+//   fullName() {
+//     return `${this.firstName} ${this.lastName}`
+//   } 
+// };
+
+// for (const p in user) {
+//     if (typeof user[p] === 'function') {
+//         console.log(`${p}: ${user[p]()}`);
+//     } else {
+//         console.log(`${p}: ${user[p]}`);
+//     }
+// }
+
+const pizza = {
+  toppings: {
+    rightHalf: {
+      cheese: 'Parmesan',
+      meat: 'Bacon',
+      veggies: 'Black Olives'
+    },
+    leftHalf: {
+      meat: 'Pepperoni'
+    }
+  }
+};
+
+const {toppings: { rightHalf: { cheese: rightCheese }}} = pizza;
+
+console.log(rightCheese);
