@@ -46,6 +46,13 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Modifying Object Properties](#modifying-object-properties)
   - [Destructuring](#destructuring)
   - [JSON](#json)
+- [Classes](#classes)
+  - [Constructors](#constructor)
+  - [Fields](#fields-public-and-private)
+  - [Getters and Setters](#getters-and-setters)
+  - [Methods](#methods-inside-classes)
+  - [Instantiating a class](#creating-instantiating-a-class)
+  - [Full Example](#full-example)
 
 ---
 
@@ -795,6 +802,152 @@ const parsed = JSON.parse(json);
 
 console.log(parsed.name); // 'Josh'
 console.log(parsed.age); // 31
+```
+
+---
+
+## Classes
+
+Classes provide a blueprint for creating **multiple objects** with the same structure but different data. They are more extensible than plain objects because you can instantiate new versions using the `new` keyword.
+
+A class is defined using the `class` keyword:
+
+```js
+class Person {
+  // class body
+}
+```
+
+### Constructor
+The **constructor** is a special method that runs automatically when a new instance is created. It initializes the properties of the class.
+
+```js
+class Person {
+  constructor(firstName, ln) {
+    this.firstName = firstName;
+    this.lastName = ln;
+  }
+}
+```
+
+Class fields are **not required** to use the same name as the information provided into the constructor.
+
+---
+
+### Fields (Public and Private)
+You can create fields **without** using `let`, `var`, or `const` inside a class.
+
+#### Public field
+
+```js
+class Person {
+  age;
+}
+```
+
+#### Private field
+Private fields begin with `#` and are only accessible inside the class:
+
+```js
+class Person {
+  #social;
+}
+```
+
+Private fields **must** be accessed using getters and setters.
+
+---
+
+### Getters and Setters
+Getters retrieve values.  
+Setters update values.  
+They are frequently used to protect or format private data.
+
+```js
+class Person {
+  #social;
+
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get ssn() {
+    return `***-**-${this.#social.substring(this.#social.length - 4)}`;
+  }
+  set ssn(social) {
+    this.#social = social;
+  }
+}
+```
+
+---
+
+### Methods Inside Classes
+Methods are functions inside a class.
+
+Classes support both traditional functions *and* arrow functions.  
+Arrow functions inside classes preserve `this` in ways that objects methods cannot.
+
+```js
+class Person {
+  constructor(name = 'Josh') {
+    this.name = name;
+  }
+
+  greet() {
+    return `Hello, I'm ${this.name}.`;
+  }
+
+  shoutName = () => this.name.toUpperCase();
+}
+```
+
+---
+
+### Creating (Instantiating) a Class
+Use the `new` keyword to create a new instance:
+
+```js
+const person1 = new Person('Dart', 'Feld');
+```
+
+This calls the constructor and assigns the passed-in values.
+
+---
+
+### Full Example
+
+```js
+class Person {
+  #social;
+
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.job = "Adventurer"; // public field
+  }
+
+  get ssn() {
+    return `***-**-${this.#social.substring(this.#social.length - 4)}`;
+  }
+  set ssn(social) {
+    this.#social = social;
+  }
+
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  shoutName = () => this.fullName().toUpperCase();
+}
+
+const hero = new Person('Dart', 'Feld');
+hero.ssn = '123-45-6789';
+
+console.log(hero.fullName());   // 'Dart Feld'
+console.log(hero.ssn);          // '***-**-6789'
+console.log(hero.shoutName());  // 'DART FELD'
 ```
 
 ---
