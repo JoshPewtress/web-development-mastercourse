@@ -1,37 +1,26 @@
-const family = {
-    husband: 'Josh',
-    wife: 'Brittany',
-    pets: {
-        andy: 'Dog',
-        maisie: 'Dog',
-        luna: 'Cat',
-        trixie: 'Cat'
-    },
-    listPets: function()  {
-        return `${this.pets.andy}, ${this.pets.maisie}, ${this.pets.luna}, ${this.pets.trixie}`;
-    }
-};
+class Hero {
+    #additions = [];
 
-function listObject(obj) {
-    for (const key in obj) {
-        if (typeof obj[key] === 'object' && obj[key] !== null) {
-            console.log(key + ':');
-            listObject(obj[key]);
-        } else if (typeof obj[key] === 'function') {
-            console.log(obj[key]());
-        } else {
-            console.log(`${key}: ${obj[key]}`);
-        }
+    constructor(firstName, lastName, job) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.job = job;
     }
+
+    get additions() {
+        this.#additions.forEach(_ => console.log(_));
+    }
+    set additions(moves) {
+        this.#additions.push(moves);
+    }
+
+    fullName = () => `${this.firstName} ${this.lastName}`;
 }
 
-listObject(family);
+const dart = new Hero('Dart', 'Feld', 'Dragoon');
+dart.additions = ['Double Slash', 'Inferno', 'Blazing Rush', 'Crush Dance'];
 
-const { pets: { andy } } = family;
-
-console.log(andy);
-
-const json = JSON.stringify(family);
-console.log(json);
-const reverted = JSON.parse(json);
-console.log(reverted);
+console.log(dart.fullName());
+dart.additions;
+console.log(dart.job);
+console.log(dart.additions);
