@@ -1,26 +1,29 @@
-class Hero {
-    #additions = [];
+const social = '123-45-6789';
 
-    constructor(firstName, lastName, job) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.job = job;
-    }
+(function(app, social) {
+    ssn = social;
 
-    get additions() {
-        this.#additions.forEach(_ => console.log(_));
-    }
-    set additions(moves) {
-        this.#additions.push(moves);
-    }
+    app.showLastFour = function() {
+        console.log(`***-**-${ssn.substring(ssn.length - 4)}`);
+    };
 
-    fullName = () => `${this.firstName} ${this.lastName}`;
+    app.Family = class {
+        constructor(name, isPet) {
+            this.name = name;
+            this.isPet = isPet;
+        }
+
+        displayMember = () => `Name: ${this.name}, Pet: ${this.isPet}.`;
+    }
+})(window.app = window.app || {}, social);
+
+const familyMembers = [
+    new app.Family('Josh', false),
+    new app.Family('Andy', true)
+];
+
+for (const f of familyMembers) {
+    console.log(f.displayMember());
 }
 
-const dart = new Hero('Dart', 'Feld', 'Dragoon');
-dart.additions = ['Double Slash', 'Inferno', 'Blazing Rush', 'Crush Dance'];
-
-console.log(dart.fullName());
-dart.additions;
-console.log(dart.job);
-console.log(dart.additions);
+app.showLastFour();
