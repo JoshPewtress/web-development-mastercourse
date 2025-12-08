@@ -1,29 +1,32 @@
-const social = '123-45-6789';
+var a = 1;
+let b = 11;
+const c = 21;
 
-(function(app, social) {
-    ssn = social;
-
-    app.showLastFour = function() {
-        console.log(`***-**-${ssn.substring(ssn.length - 4)}`);
-    };
-
-    app.Family = class {
-        constructor(name, isPet) {
-            this.name = name;
-            this.isPet = isPet;
-        }
-
-        displayMember = () => `Name: ${this.name}, Pet: ${this.isPet}.`;
-    }
-})(window.app = window.app || {}, social);
-
-const familyMembers = [
-    new app.Family('Josh', false),
-    new app.Family('Andy', true)
-];
-
-for (const f of familyMembers) {
-    console.log(f.displayMember());
+/*
+if (true) {
+    var a = 2; // overwrote global `a`
+    let b = 12;
+    const c = 22;
 }
+*/
 
-app.showLastFour();
+/*
+function testing() {
+    var a = 2;
+    let b = 12;
+    const c = 22;
+}
+testing();
+*/
+
+/*
+for (let i = 0; i < 1; i++) {
+    var a = 2; // overwrote global `a`
+    let b = 12;
+    const c = 22;
+}
+*/
+
+console.log(a);
+console.log(b);
+console.log(c);
