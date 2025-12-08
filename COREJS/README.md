@@ -62,6 +62,10 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Adding Classes](#adding-classes-to-an-iife)
   - [Multiple IIFEs with Same Namespaces](#multiple-iifes-same-namespace)
   - [Multiple IIFEs with Different Namespaces](#multiple-iifes-different-namespaces)
+- [Scope](#scope)
+  - [Global Scope](#global-scope)
+  - [Function Scope](#function-scope-var)
+  - [Block Scope](#block-scope-let-and-const)
 
 ---
 
@@ -1121,5 +1125,86 @@ This prevents naming conflicts even if both namespaces contain a function with t
 game.start();
 ui.start(); // would be a different function
 ```
+
+---
+
+## Scope
+
+Scope determines **where variables can be accessed** in JavaScript.  
+Different declaration keywords (`var`, `let`, `const`) behave differently depending on the type of scope they create or respect.
+
+JavaScript has three major types of scope:
+
+- **Global Scope**
+- **Function Scope**
+- **Block Scope**
+
+### Global Scope
+A variable is in the **global scope** if it is declared outside of any function or block.
+
+```js
+var a = 5;    // global
+let b = 10;   // also global
+const c = 15; // also global
+```
+
+All global variables are accessible anywhere in the script.
+
+---
+
+### Function Scope (`var`)
+`var` is **function-scoped**, meaning:
+
+- It is visible everywhere **inside the function** in which it is declared
+- It does **not** obey block scope (if statements, loops, etc.)
+
+```js
+var a = 5;
+
+function testing() {
+  var a = 6; // this creates a NEW variable, but only inside the function
+  console.log(a); // 6
+}
+
+function testing2() {
+  a = 10; // this edits the global `a` if the function is executed
+}
+
+console.log(a); // 5
+testing2();     // edits the global `a`
+console.log(a); // 10
+```
+
+---
+
+### Block Scope (`let` and `const`)
+`let` and `const` obey **block scope**, meaning they only exist inside the nearest `{ }`.
+
+```js
+let a = 5;
+
+function testing() {
+  let a = 6; // new variable inside the function
+  console.log(a); // 6
+}
+
+testing();
+console.log(a); // 5
+```
+
+This behavior applies to blocks too:
+
+```js
+let x = 1;
+
+if (true) {
+  let x = 2;      // new variable inside this block
+  console.log(x); // 2
+}
+
+console.log(x); // 1
+```
+
+`const` behaves the same way but cannot be reassigned.
 
 ---

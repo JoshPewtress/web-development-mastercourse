@@ -1,46 +1,20 @@
-// IIFE - Immediately Invoking Function Expression
 
-const myName = 'Tim Corey';
+// var a = 4;
 
-// 3rd party script overwrote our function
-// function greetUser() {
-//   console.log('Welcome to our app');
+// function testing() {
+//   var a = 5;
+//   console.log(`Inside testing(): ${a}`);
 // }
 
-(function(app, fullName) {
-  fullName = fullName;
-  app.greetUser = function() {
-    console.log(`Hello ${fullName}`);
-  };
-  app.Person = class {
-    constructor(firstName, lastName) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-    }
-  };
-})(window.app = window.app || {}, myName);
+// testing();
+// console.log(`global: ${a}`);
 
-console.log(window.app);
+// let and const are scoped at the block level
+// const b = 4;
 
+// if (true) {
+//   const b = 5;
+//   console.log(b);
+// }
 
-// greetUser();
-app.greetUser();
-const p = new app.Person('Tim', 'Corey');
-const q = new app.Person('Sue', 'Storm');
-console.log(q.lastName);
-
-(function(app) {
-  app.sayGoodbye = function() {
-    console.log('Goodbye my favorite user');
-  }
-})(window.app = window.app || {});
-
-app.sayGoodbye();
-
-(function(app) {
-  app.greetUser = function() {
-    console.log('Welcome to our other app!');
-  }
-})(window.otherApp = window.otherApp || {});
-
-otherApp.greetUser();
+// console.log(b);
