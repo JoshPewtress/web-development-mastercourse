@@ -53,6 +53,15 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Methods](#methods-inside-classes)
   - [Instantiating a class](#creating-instantiating-a-class)
   - [Full Example](#full-example)
+- [IIFE](#iife-immediately-invoked-function-expression)
+  - [Basic Structure of an IIFE](#basic-structure-of-an-iife)
+  - [Creating a Namespace](#creating-a-namespace-with-iife)
+  - [Declaring Public & Private Members](#public-vs-private-members-inside-an-iife)
+  - [Passing in Variables](#passing-variables-into-an-iife)
+  - [Adding Functions](#adding-functions-to-an-iife)
+  - [Adding Classes](#adding-classes-to-an-iife)
+  - [Multiple IIFEs with Same Namespaces](#multiple-iifes-same-namespace)
+  - [Multiple IIFEs with Different Namespaces](#multiple-iifes-different-namespaces)
 
 ---
 
@@ -948,6 +957,169 @@ hero.ssn = '123-45-6789';
 console.log(hero.fullName());   // 'Dart Feld'
 console.log(hero.ssn);          // '***-**-6789'
 console.log(hero.shoutName());  // 'DART FELD'
+```
+
+---
+
+## IIFE (Immediately Invoked Function Expression)
+
+An **IIFE** is a function that runs immediately after it is created.  
+Its main purpose is to create a **private scope** for your code so it does not interfere with other scripts, especially important when third-party JavaScript libraries became common.
+
+Before modern module systems existed, everything in JavaScript shared the **global namespace**.  
+If two scripts used the same function or variable name, one could overwrite the other and break your application.
+
+IIFEs solve this by allowing you to create your own **namespace** and encapsulate code inside it.
+
+### Basic Structure of an IIFE
+
+```js
+(function() {
+  // All code inside here is private.
+})();
+```
+
+This function executes immediately because of the trailing `()`.
+
+---
+
+### Creating a Namespace with IIFE
+A common pattern is to attach your code to the `window` object using a customer property, essentially your **own namespace**.
+
+```js
+(function(app) {
+  // You can add public members using app.
+})(window.app = window.app || {});
+```
+
+Breakdown:
+
+- `window.app` - your namespace
+- `= window.app || {}`
+  - If `app` already exists, reuse it
+  - Otherwise initialize it as an empty object
+- The `app` parameter inside the IIFE refers to whatever was passed in
+
+This allows you to safely run multiple IIFEs using the **same namespace**, even in different files.
+
+---
+
+### Public vs Private Members Inside an IIFE
+Inside an IIFE, you can choose what should be **public** (exposed on your namespace) or **private** (hidden inside the closure).
+
+#### Private variable:
+
+```js
+(function(app) {
+  counter = 0; // private, not accessible outside
+})(window.app = window.app || {});
+```
+
+#### Public variable
+
+```js
+(function(app) {
+  app.counter = 0; // public, due to app.
+})(window.app = window.app || {});
+```
+
+---
+
+### Passing Variables into an IIFE
+You can pass variables into an IIFE by adding an `,` followed by the variable name after the `{}`.
+
+```js
+const name = 'Josh';
+let isFood = true;
+
+(function(app, firstName, isFood) {
+  app.firstName = firstName; // public
+  isFood = isFood; // private
+})(window.app = window.app || {}, name, isFood);
+```
+
+---
+
+### Adding Functions to an IIFE
+Functions can be public or private through the use of `app.`, the same as variables.
+
+```js
+(function(app) {
+  app.sayHello = function() {
+    console.log('Hello User!');
+  }; // public function
+
+  sayGoodbye = function() {
+    console.log('You can\'t call this outside!');
+  }; // private function
+})(window.app = window.app || {});
+```
+
+---
+
+### Adding Classes to an IIFE
+Classes can be public or private through the use of `app.`, the same as variables, and functions.
+
+```js
+(function(app) {
+  app.Person = class {
+    constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  };
+})(window.app = window.app || {});
+```
+
+---
+
+### Multiple IIFEs, Same Namespace
+You can split code across files but attach them to the same namespace:
+
+**First file:**
+
+```js
+(function(app) {
+  app.data = [];
+})(window.app = window.app || {});
+```
+
+**Second File:**
+
+```js
+(function(app) {
+  app.addItem = function(item) {
+    app.data.push(item);
+  };
+})(window.app = window.app || {});
+```
+
+Both modify the same `app` namespace without overwriting each other.
+
+---
+
+### Multiple IIFEs, Different Namespaces
+You may create completely separate namespaces:
+
+```js
+(function(game) {
+  game.start = function() {
+    console.log('I am from the game IIFE');
+  };
+})(window.app = window.app || {});
+
+(function(ui) {
+  ui.start = function() {
+    console.log('I am from the ui IIFE');
+  };
+})(window.app = window.app || {});
+```
+
+This prevents naming conflicts even if both namespaces contain a function with the same name.
+
+```js
+game.start();
+ui.start(); // would be a different function
 ```
 
 ---

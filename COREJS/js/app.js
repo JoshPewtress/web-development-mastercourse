@@ -1,30 +1,46 @@
-// class = blueprint, class instance = house
-class Person {
-  #social = '';
+// IIFE - Immediately Invoking Function Expression
 
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
+const myName = 'Tim Corey';
+
+// 3rd party script overwrote our function
+// function greetUser() {
+//   console.log('Welcome to our app');
+// }
+
+(function(app, fullName) {
+  fullName = fullName;
+  app.greetUser = function() {
+    console.log(`Hello ${fullName}`);
+  };
+  app.Person = class {
+    constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  };
+})(window.app = window.app || {}, myName);
+
+console.log(window.app);
+
+
+// greetUser();
+app.greetUser();
+const p = new app.Person('Tim', 'Corey');
+const q = new app.Person('Sue', 'Storm');
+console.log(q.lastName);
+
+(function(app) {
+  app.sayGoodbye = function() {
+    console.log('Goodbye my favorite user');
   }
+})(window.app = window.app || {});
 
-  getFullName = () => `${this.firstName} ${this.lastName}`;
+app.sayGoodbye();
 
-  get ssn() {
-    return `***-**-${this.#social.substring(this.#social.length - 4)}`;
+(function(app) {
+  app.greetUser = function() {
+    console.log('Welcome to our other app!');
   }
-  set ssn(social) {
-    this.#social = social;
-  }
-}
+})(window.otherApp = window.otherApp || {});
 
-const person1 = new Person('Tim', 'Corey');
-const person2 = new Person('Sue', 'Storm');
-
-console.log(person1.lastName);
-console.log(person2.lastName);
-
-person1.ssn = '123-45-6789';
-
-console.log(person1.ssn);
-console.log(person1.getFullName())
-
+otherApp.greetUser();
