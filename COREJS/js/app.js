@@ -1,20 +1,14 @@
+'use strict';
 
-// var a = 4;
+// let myTest = 2;
+// mytest = 3;
+// console.log(myTest);
 
-// function testing() {
-//   var a = 5;
-//   console.log(`Inside testing(): ${a}`);
+// let test = {};
+// 'test'.myInfo = 'Hello';
+// console.log('test'.myInfo);
+
+// function add(x, x) {
+//     return x + x;
 // }
-
-// testing();
-// console.log(`global: ${a}`);
-
-// let and const are scoped at the block level
-// const b = 4;
-
-// if (true) {
-//   const b = 5;
-//   console.log(b);
-// }
-
-// console.log(b);
+// console.log(add(5, 4));

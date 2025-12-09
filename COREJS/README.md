@@ -66,6 +66,9 @@ JavaScript concepts and best practices learned while following the "Web Developm
   - [Global Scope](#global-scope)
   - [Function Scope](#function-scope-var)
   - [Block Scope](#block-scope-let-and-const)
+- [Strict Mode](#use-strict)
+  - [What Strict Mode Does](#what-strict-mode-does)
+  - [Apply in a function](#applying-strict-mode-to-a-single-function)
 
 ---
 
@@ -1206,5 +1209,51 @@ console.log(x); // 1
 ```
 
 `const` behaves the same way but cannot be reassigned.
+
+---
+
+## 'use strict'
+
+`'use strict';` is a directive placed at the **top of a JavaScript file** (or at the top of a function) that actives **Strict Mode**.
+
+Strict Mode changes the way JavaScript executes by **disallowing older, unsafe, or ambiguous behaviors**.  
+Its purpose is to help you write cleaner, more reliable code and avoid silent bugs.
+
+You enable it by adding this line at the top of your script:
+
+```js
+'use strict';
+```
+
+### What Strict Mode Does
+Strict Mode prevents or warns against problematic code patterns. Some key rules include:
+
+- **You cannot use undeclared variables**
+- **You cannot accidentally create global variables**
+- **Duplicate function parameters are disallowed**
+- **`this` inside functions will not default to `window`**
+- **Silent errors throw real exceptions instead**
+
+Mistake caught by strict mode:
+
+```js
+'use strict';
+
+x = 5; // Error: x is not declared
+```
+
+Without strict mode, the above line would silently create a global variable. These are often a source of bugs.
+
+---
+
+### Applying Strict Mode to a Single Function
+Strict Mode can also be scoped to a single function.
+
+```js
+function demo() {
+  'use strict';
+  // strict rules apply only inside this function
+}
+```
 
 ---
