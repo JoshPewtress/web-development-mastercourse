@@ -9,6 +9,7 @@
     <body>
         <main>
             <h1>Welcome to the DOM Demo</h1>
+            <button class="toggle-dark-mode" type="button">Dark Mode</button>
             <p id="first-paragraph">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque dolorum sunt a dolore harum corporis id mollitia at, tenetur sapiente, saepe, officia vero voluptates? Laborum?
             </p>
@@ -27,17 +28,32 @@
             </div>
         </main>
         <script>
-            // DOM, window, document
-            // const demo = document.getElementById('key-items');
-            // console.log(demo);
+            // const p = document.getElementById('first-paragraph');
+            // p.innerText = 'This is a test';
 
-            // let p = document.querySelector('.support-paragraph');
-            // p = document.querySelector('#third-paragraph');
-            // p = document.querySelector('div ul li');
-            // console.log(p);
+            // const list = document.querySelector('ul');
+            // list.innerHTML = '<li>test 1</li><li>test 2</li>';
 
-            // let q = document.querySelectorAll('.support-paragraph');
-            // q.forEach(el => console.log(el));
+            // const p2 = document.querySelector('.support-paragraph');
+            // p2.remove();
+
+            // const headingItem = document.querySelector('h1');
+            // headingItem.style.color = 'red';
+            // headingItem.style.fontSize = '1.25rem';
+
+            // const p1 = document.querySelector('p');
+            // p1.classList.add('dark-mode');
+
+            // const paragraphs = document.querySelectorAll('p');
+            // paragraphs.forEach(el => {
+            //     el.classList.remove('support-paragraph');
+            //     el.classList.add('dark-mode');
+            // });
+            // paragraphs.forEach(el => {
+            //     if (el.classList.contains('support-paragraph')) {
+            //         el.classList.add('dark-mode');
+            //     }
+            // });
         </script>
     </body>
 </html>

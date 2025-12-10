@@ -13,6 +13,12 @@ These notes cover how JavaScript locates, selects, and manipulates HTML elements
     - [document.getElementById](#documentgetelementbyid)
     - [document.querySelector](#documentqueryselector)
     - [document.querySelectorAll](#documentqueryselectorall)
+- [Modifying Elements](#modifying-elements)
+    - [Text](#innertext)
+    - [HTML](#innerhtml)
+    - [Removing Elements](#removing-elements)
+    - [Inline Styles](#inline-styles)
+    - [Working with classes](#classes-classlist)
 
 ---
 
@@ -97,5 +103,103 @@ A **NodeList** can be looped through with:
 - Index access (`buttons[0]`, `buttons[1]`)
 
 This method is extremely flexible and commonly used when working with groups of elements.
+
+---
+
+## Modifying Elements
+
+Once selected, elements can be changed, styled, or removed using JavaScript.
+
+### innerText
+Changes only the **text content** of an element.
+
+```js
+const p = document.getElementById('id-name');
+p.innerText = 'New text';
+```
+
+- Treats content as plain text
+- Does not parse HTML
+
+---
+
+### innerHTML
+Replaces or rewrites the **HTML inside an element**.
+
+```js
+const list = document.querySelector('ul');
+list.innerHTML = '<li>Item one</li><li>Item two</li>';
+```
+
+This can remove old elements and insert new ones.
+
+---
+
+### Removing Elements
+Any selected element can be removed using **.remove()**.
+
+```js
+const p2 = document.querySelector('class-name');
+p2.remove();
+```
+
+Removes the element entirely from the DOM.
+
+---
+
+### Inline Styles
+You can modify CSS properties directly through `.style.property`.
+
+```js
+const headingItem = document.querySelector('h1');
+headingItem.style.color = 'red';
+headingItem.style.fontSize = '1.25rem';
+```
+
+Style changes apply immediately and override external CSS.
+
+---
+
+### Classes (classList)
+The `classList` object allows you to **add**, **remove**, or **check** for CSS classes.
+
+#### Adding a class
+
+```js
+const p1 = document.querySelector('p');
+p1.classList.add('class-name');
+```
+
+#### Removing a class
+
+```js
+p1.classList.remove('class-name');
+```
+
+#### Checking for a class
+
+```js
+if (p1.classList.contains('class-name')) {
+    p1.classList.add('class-name');
+};
+```
+
+#### Looping through elements and modifying classes
+
+```js
+const paragraphs = document.querySelectorAll('p');
+
+paragraphs.forEach(el => {
+    if (el.classList.contains('class-name')) {
+        el.classList.add('class-name');
+    };
+});
+```
+
+This is commonly used for:
+
+- Applying themes
+- Highlighting specific sections
+- Cleaning up unwanted auto-generated classes
 
 ---
