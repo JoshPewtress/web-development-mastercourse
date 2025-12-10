@@ -8,7 +8,7 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
 ## Overview
 
 - **Purpose:** A single place to track and reference what I've learned about HTML, CSS, and JS. From beginner topics to more advanced patterns.  
-- **Structure:** Divided into folders (`COREHTML`, `CORECSS`, `COREJS`, `WEBACCESSIBILITY`, etc.), each containing a `README.md` that documents key concepts, examples, best practices, and my personal notes.  
+- **Structure:** Divided into folders (`COREHTML`, `CORECSS`, `COREJS`, `JSINTHEDOM`, `WEBACCESSIBILITY`, etc.), each containing a `README.md` that documents key concepts, examples, best practices, and my personal notes.  
 - **Who it's for:** Me (my future self), but you’re welcome to browse if you're learning along too.
 
 ---
@@ -19,7 +19,7 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
    ```bash
    git clone https://github.com/JoshPewtress/web-development-mastercourse.git
    ```
-2. Browse through the folders (`COREHTML`, `CORECSS`, `COREJS`, `WEBACCESSIBILITY`, ...).
+2. Browse through the folders (`COREHTML`, `CORECSS`, `COREJS`, `JSINTHEDOM`, `WEBACCESSIBILITY`).
 3. Open the relevant `README.md` to review concepts or sample code.
 4. Use examples directly in your own projects, copy/paste, tweak, experiment!
 
@@ -33,8 +33,9 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
 |   ├── Learn            — Basic Project with learning examples
 |   └── Practice         — In-depth Project where I practice what I learn, and update with each new thing
 ├── CORECSS/             — CSS styling, layout, best practices  
-├── COREJS/              — JavaScript basics, variables, DOM, scripts  
-├── WEBACCESSIBILITY/    — Making pages accessible for everyone 
+├── COREJS/              — JavaScript basics, variables, scripts  
+├── JSINTHEDOM/          — DOM
+├── WEBACCESSIBILITY/    — Making pages accessible for everyone  
 └── README.md            — This file (project overview)
 ```
 
@@ -60,6 +61,7 @@ This structure makes it easy to revisit concepts as projects become more complex
 | COREHTML | Tags, structure, debugging, page setup |
 | CORECSS | Selectors, sizing, fonts, colors, spacing, float, specificity |
 | COREJS | Script tag, console output, variables, arrays, conditionals, loops, functions, objects, classes, IIFE, scope, use-strict |
+| JSINTHEDOM | DOM |
 | WEBACCESSIBILITY | Semantic HTML, ARIA-labels |
 
 I update these sections as I learn new material and apply it in practice projects.
