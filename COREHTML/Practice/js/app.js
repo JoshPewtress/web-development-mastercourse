@@ -1,11 +1,11 @@
 'use strict';
 
-const me = {
-    firstName: 'Josh',
-    lastName: 'Pewtress',
-    fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-}
+// const u = document.querySelectorAll('.topics');
+// console.log(u);
 
-console.log(me.fullName());
+// u.forEach(el => {
+//     console.log(el);
+// });
+
+const a = document.querySelector('.topic-description');
+console.log(a);
