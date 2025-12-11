@@ -1,11 +1,5 @@
 'use strict';
 
-// const u = document.querySelectorAll('.topics');
-// console.log(u);
-
-// u.forEach(el => {
-//     console.log(el);
+// const topicBlocks = document.querySelectorAll('li').forEach(el => {
+//     el.style.backgroundColor = 'rgba(143, 191, 237, 0.2)';
 // });
-
-const a = document.querySelector('.topic-description');
-console.log(a);
