@@ -19,6 +19,11 @@ These notes cover how JavaScript locates, selects, and manipulates HTML elements
     - [Removing Elements](#removing-elements)
     - [Inline Styles](#inline-styles)
     - [Working with classes](#classes-classlist)
+- [Traversing the DOM](#traversing-the-dom)
+    - [Selecting Descendants](#selecting-descendants-children)
+    - [Moving Up the DOM](#moving-up-the-dom)
+    - [Moving Between Siblings](#moving-between-siblings)
+    - [Summary of Traversal Tools](#summary-of-traversal-tools)
 
 ---
 
@@ -201,5 +206,121 @@ This is commonly used for:
 - Applying themes
 - Highlighting specific sections
 - Cleaning up unwanted auto-generated classes
+
+---
+
+## Traversing the DOM
+
+Dom traversal allows you to navigate between related elements **without running new global queries** every time.  
+Instead of repeatedly calling `document.querySelector`, you can move **down**, **up**, or **sideways** through the existing DOM structure starting from an already-selected element.
+
+Traversing improves performance, keeps code cleaner, and helps you work with dynamic or nested content.
+
+### Selecting Descendants (Children)
+You can move **downward** into an element's children using either:
+
+1. **Querying inside the element**  
+Useful for finding a **specific** descendant.
+
+```js
+const container = document.getElementById('content-area');
+const title = container.querySelector('section-title');
+```
+
+This avoids searching the entire document again.
+
+---
+
+2. **Browsing all children with** `.children.`  
+Returns an **HTMLCollection** of direct child elements.
+
+```js
+const list = document.getElementById('menu');
+const kids = list.children;
+
+for (let i = 0; i < kids.length; i++) {
+    console.log(kids[i]);
+}
+```
+
+To make children easier to loop over, convert them to an array:
+
+```js
+const childrenArray = Array.from(list.children);
+
+childrenArray.forEach(el => {
+    console.log(el);
+});
+```
+
+---
+
+### Moving Up the DOM
+To move to **parent** elements, you can use:
+
+#### `.parentElement`  
+Moves one level upward.
+
+```js
+const item = document.querySelector('.menu-item');
+console.log(item.parentElement);
+```
+
+---
+
+#### `.closest()`  
+Searches upward until it finds a matching selector.
+
+```js
+const button = document.querySelector('.submit-btn');
+
+const form = button.closest('form'); // nearest <form>
+const main = button.closest('main'); // keeps going until <main>
+```
+
+`closest()` is excellent for working with nested components or even delegation.
+
+---
+
+### Moving Between Siblings
+Siblings are elements that share the same parent.  
+You can move **forward** or **backward** through them.
+
+#### `.nextElementSibling`
+
+```js
+let item = document.querySelector('li');
+
+while (item !== null) {
+    console.log(item);
+    item = item.nextElementSibling;
+}
+```
+
+#### `.previousElementSibling`
+
+```js
+let item = document.querySelector('li');
+
+while (item !== null) {
+    console.log(item);
+    item = item.previousElementSibling;
+}
+```
+
+These allow you to walk sideways through menus, lists, table rows, etc.
+
+---
+
+### Summary of Traversal Tools
+
+| Direction | Property / Method | Description |
+| :--- | :--- | :--- |
+| Down | `.children`| Direct children only |
+| Down | `.querySelector()` | Search inside a specific element |
+| Up | `.parentElement` | One level upward |
+| Up | `.closest()` | Finds nearest ancestor matching selector |
+| Sideways | `.nextElementSibling` | Move to next sibling |
+| Sideways | `.previousElementSibling` | Move to previous sibling |
 
 ---

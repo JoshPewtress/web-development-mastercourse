@@ -28,32 +28,30 @@
             </div>
         </main>
         <script>
-            // const p = document.getElementById('first-paragraph');
-            // p.innerText = 'This is a test';
+            // const section = document.getElementById('list-section');
+            // const list = section.querySelector('ul');
+            // const items = list.children;
+            // Array.from(items).forEach(el => console.log(el));
+            // for (let i = 0; i < items.length; i++){
+            //     console.log(items[i]);
+            // }
 
-            // const list = document.querySelector('ul');
-            // list.innerHTML = '<li>test 1</li><li>test 2</li>';
+            // const section = document.getElementById('key-items');
+            // const parent = section.parentElement;
+            // const mainElement = section.closest('main');
+            // console.log(mainElement);
+            
+            let listItem = document.querySelector('li');
+            // const nextItem = listItem.nextElementSibling;
+            // const finalItem = nextItem.nextElementSibling;
+            // const unknownItem = finalItem.previousElementSibling;
 
-            // const p2 = document.querySelector('.support-paragraph');
-            // p2.remove();
-
-            // const headingItem = document.querySelector('h1');
-            // headingItem.style.color = 'red';
-            // headingItem.style.fontSize = '1.25rem';
-
-            // const p1 = document.querySelector('p');
-            // p1.classList.add('dark-mode');
-
-            // const paragraphs = document.querySelectorAll('p');
-            // paragraphs.forEach(el => {
-            //     el.classList.remove('support-paragraph');
-            //     el.classList.add('dark-mode');
-            // });
-            // paragraphs.forEach(el => {
-            //     if (el.classList.contains('support-paragraph')) {
-            //         el.classList.add('dark-mode');
-            //     }
-            // });
+            while (listItem !== null) {
+                console.log(listItem);
+                listItem = listItem.nextElementSibling;
+            }
+            
+            
         </script>
     </body>
 </html>

@@ -34,7 +34,7 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
 |   └── Practice         — In-depth Project where I practice what I learn, and update with each new thing
 ├── CORECSS/             — CSS styling, layout, best practices  
 ├── COREJS/              — JavaScript basics, variables, scripts  
-├── JSINTHEDOM/          — DOM
+├── JSINTHEDOM/          — DOM, selecting, manipulating, and traversing elements
 ├── WEBACCESSIBILITY/    — Making pages accessible for everyone  
 └── README.md            — This file (project overview)
 ```
