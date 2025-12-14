@@ -1,17 +1,29 @@
 'use strict';
 
-// const sections = document.querySelectorAll('.topics-section');
-// const sectionsArray = Array.from(sections);
+const list = document.getElementById('js-topics');
+const items = [
+    {
+        title: 'Creating HTML',
+        description: 'Generating and inserting elements dynamically using <code>innerHTML</code>, <code>createElement()</code>, and <code>DocumentFragment</code> with attention to performance and safety tradeoffs'
+    }
+];
 
-// sectionsArray.forEach(el => console.log(el));
+const fragment = new DocumentFragment();
 
-const navigation = document.querySelector('nav');
-let navItem = navigation.querySelector('li');
+items.forEach(item => {
+    const listItem = document.createElement('li');
 
-while (navItem !== null) {
-    console.log(navItem);
-    navItem = navItem.nextElementSibling;
-}
+    const title = document.createElement('span');
+    title.classList.add('topic-title');
+    title.innerText = item.title;
 
+    const description = document.createElement('p');
+    description.classList.add('topic-description');
+    description.innerHTML = item.description;
 
+    listItem.appendChild(title);
+    listItem.appendChild(description);
+    fragment.appendChild(listItem);
+});
 
+list.appendChild(fragment);
