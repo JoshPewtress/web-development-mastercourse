@@ -26,32 +26,38 @@
                     <li>Our Third LI</li>
                 </ul>
             </div>
+            <div>
+                <ul id="good-foods">
+
+                </ul>
+            </div>
         </main>
         <script>
-            // const section = document.getElementById('list-section');
-            // const list = section.querySelector('ul');
-            // const items = list.children;
-            // Array.from(items).forEach(el => console.log(el));
-            // for (let i = 0; i < items.length; i++){
-            //     console.log(items[i]);
-            // }
+            // const list = document.getElementById('key-items');
+            // list.innerHTML += '<li>Our Fourth LI</li>';
+            
+            // const foods = ['Hamburgers', 'Hot Dogs', 'Pasta', 'Bread'];
+            // const foodList = document.getElementById('good-foods');
 
-            // const section = document.getElementById('key-items');
-            // const parent = section.parentElement;
-            // const mainElement = section.closest('main');
-            // console.log(mainElement);
-            
-            let listItem = document.querySelector('li');
-            // const nextItem = listItem.nextElementSibling;
-            // const finalItem = nextItem.nextElementSibling;
-            // const unknownItem = finalItem.previousElementSibling;
+            // foods.forEach(food => {
+            //     // Least efficient
+            //     //foodList.innerHTML += `<li>${food}</li>`;
 
-            while (listItem !== null) {
-                console.log(listItem);
-                listItem = listItem.nextElementSibling;
-            }
-            
-            
+            //     // Medium efficient
+            //     const el = document.createElement('li');
+            //     el.innerText = food;
+            //     foodList.appendChild(el);
+            // });
+
+            // Most efficient
+            // const fragment = new DocumentFragment();
+            // foods.forEach(food => {
+            //     const el = document.createElement('li');
+            //     el.innerText = food;
+            //     fragment.appendChild(el);
+            // });
+
+            // foodList.appendChild(fragment);
         </script>
     </body>
 </html>

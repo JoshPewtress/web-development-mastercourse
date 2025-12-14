@@ -24,6 +24,10 @@ These notes cover how JavaScript locates, selects, and manipulates HTML elements
     - [Moving Up the DOM](#moving-up-the-dom)
     - [Moving Between Siblings](#moving-between-siblings)
     - [Summary of Traversal Tools](#summary-of-traversal-tools)
+- [Creating HTML with JavaScript](#creating-html-with-javascript)
+    - [innerHTML](#using-innerhtml-least-efficient)
+    - [document.createElement](#creating-elements-with-documentcreateelement)
+    - [DocumentFragment](#using-documentfragment-most-efficient)
 
 ---
 
@@ -322,5 +326,81 @@ These allow you to walk sideways through menus, lists, table rows, etc.
 | Up | `.closest()` | Finds nearest ancestor matching selector |
 | Sideways | `.nextElementSibling` | Move to next sibling |
 | Sideways | `.previousElementSibling` | Move to previous sibling |
+
+---
+
+## Creating HTML with JavaScript
+
+JavaScript can dynamically create and insert HTML elements into the DOM.  
+There are multiple ways to do this, each with different performance and safety tradeoffs.
+
+Choosing the right approach matters when working with **lists**, **tables**, or **large datasets**.
+
+### Using innerHTML (Least Efficient)
+The simplest way to add HTML is by modifying `.innerHTML`.
+
+```js
+const list = document.getElementById('key-items');
+list.innerHTML += '<li>Our Fourth Li</li>';
+```
+
+While this approach is quick and easy, it has drawbacks:
+
+- Re-parses the entire element's HTML every time
+- Can overwrite existing event listeners
+- Can introduce security risks if user input is involved
+
+Best used only for **small**, **static updates**.
+
+---
+
+### Creating Elements with document.createElement
+A safer and more controlled approach is to create elements manually and append them.
+
+```js
+const foods = ['Hamburgers', 'Hot Dogs', 'Pasta', 'Bread'];
+const foodList = document.getElementById('good-foods');
+
+foods.forEach(food => {
+    const el = document.createElement('li');
+    el.innerText = food;
+    foodList.appendChild(el);
+});
+```
+
+Benefits of this approach:
+
+- Does not reparse existing HTML
+- Preserves event listeners
+- Safer for dynamic or user-generated content
+
+This is a **good general-purpose solution**.
+
+---
+
+### Using DocumentFragment (Most Efficient)
+When adding **many elements**, the most efficient method is to use a `Document Fragment`.
+
+A `DocumentFragment` exists in memory and does **not** cause browser reflows until it is attached to the DOM.
+
+```js
+const fragment = new DocumentFragment();
+
+foods.forEach(food => {
+    const el = document.createElement('li');
+    el.innerText = food;
+    fragment.appendChild(el);
+});
+
+foodList.appendChild(fragment);
+```
+
+Advantages:
+
+- Only one DOM update
+- Best performance for large lists
+- Cleaner and more scalable
+
+This is the **preferred approach** when generating many elements.
 
 ---

@@ -34,7 +34,7 @@ It’s a personal study reference — everything from HTML basics to CSS, layout
 |   └── Practice         — In-depth Project where I practice what I learn, and update with each new thing
 ├── CORECSS/             — CSS styling, layout, best practices  
 ├── COREJS/              — JavaScript basics, variables, scripts  
-├── JSINTHEDOM/          — DOM, selecting, manipulating, and traversing elements
+├── JSINTHEDOM/          — DOM, selecting, manipulating, and traversing elements, creating html
 ├── WEBACCESSIBILITY/    — Making pages accessible for everyone  
 └── README.md            — This file (project overview)
 ```
@@ -61,7 +61,7 @@ This structure makes it easy to revisit concepts as projects become more complex
 | COREHTML | Tags, structure, debugging, page setup |
 | CORECSS | Selectors, sizing, fonts, colors, spacing, float, specificity |
 | COREJS | Script tag, console output, variables, arrays, conditionals, loops, functions, objects, classes, IIFE, scope, use-strict |
-| JSINTHEDOM | DOM, selecting elements, modifying elements |
+| JSINTHEDOM | DOM, manipulating elements, creating html |
 | WEBACCESSIBILITY | Semantic HTML, ARIA-labels |
 
 I update these sections as I learn new material and apply it in practice projects.
