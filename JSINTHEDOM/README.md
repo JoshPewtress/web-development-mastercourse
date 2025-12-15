@@ -28,6 +28,15 @@ These notes cover how JavaScript locates, selects, and manipulates HTML elements
     - [innerHTML](#using-innerhtml-least-efficient)
     - [document.createElement](#creating-elements-with-documentcreateelement)
     - [DocumentFragment](#using-documentfragment-most-efficient)
+- [Events](#events)
+    - [Adding Event Listeners](#adding-event-listeners)
+    - [Event Handler Functions](#event-handler-functions)
+    - [Preventing Default Behavior](#preventing-default-behavior)
+    - [Removing Event Listeners](#removing-event-listeners)
+    - [Event Bubbling](#event-bubbling)
+    - [Stopping Event Propagation](#stopping-event-propagation)
+    - [Event Capturing](#event-capturing)
+    - [Using Events to Modify the DOM](#using-events-to-modify-the-dom)
 
 ---
 
@@ -402,5 +411,163 @@ Advantages:
 - Cleaner and more scalable
 
 This is the **preferred approach** when generating many elements.
+
+---
+
+## Events
+
+Events allow JavaScript to **respond to user interactions** such as clicks, key presses, form submissions, and more.  
+By listening for events, JavaScript can dynamically update the DOM based on user actions.
+
+### Adding Event Listeners
+Event listeners are attached using `.addEventListener()`.
+
+The basic structure is:
+
+```js
+element.addEventListener('eventType', handlerFunction);
+```
+
+Example:
+
+```js
+const addAction = document.getElementById('add-to-list');
+
+addAction.addEventListener('click', addFromLink);
+```
+
+This listens for a **click** event and calls a function when it occurs.
+
+---
+
+### Event Handler Functions
+Event handlers can be written as:
+
+- Arrow functions (inline)
+- Named functions (recommended for reuse and removal)
+
+Named function example:
+
+```js
+function addFromLink(e) {
+    const li = document.createElement('li');
+    li.innerText = 'New List Item';
+    document.getElementById('listName').appendChild(li);
+}
+```
+
+Using named functions allows you to remove listeners later.
+
+---
+
+### Preventing Default Behavior
+Some elements (like anchor tags and forms) have built-in behaviors.
+
+Calling `e.preventDefault()` stops the browser's default action.
+
+```js
+function addFromLink(e) {
+    e.preventDefault(); // prevents page navigation
+}
+```
+
+This is commonly used when:
+
+- Clicking links used as buttons
+- Submitting forms handled by JavaScript
+
+---
+
+### Removing Event Listeners
+You can remove an event listener using `.removeEventListener()`.  
+This requires the **same function reference** used when adding it.
+
+```js
+addAction.addEventListener('click', addFromLink);
+
+function addFromLink(e) {
+    e.preventDefault();
+    addAction.removeEventListener('click', addFromLink);
+}
+```
+
+This is useful for:
+
+- One-time actions
+- Preventing repeated behavior
+- Cleanup after interactions
+
+---
+
+### Event Bubbling
+By default events **bubble up** the DOM.
+
+This means:
+
+1. The event fires on the clicked element
+2. Then its parent
+3. Then higher ancestors
+
+```js
+mainEl.addEventListener('click', addLi);
+mainHeading.addEventListener(click', addLiFromH1);
+```
+
+Clicking the `h1` would normally trigger **both** handlers.
+
+---
+
+### Stopping Event Propagation
+Calling `e.stopPropagation()` prevents the event from bubbling further.
+
+```js
+function addLiFromH1(e) {
+    e.stopPropagation();
+    const li = coduement.createElement('li');
+    li.innerText = 'Li from H1';
+    list.appendChild(li);
+}
+```
+
+This ensures only the intended handler runs.
+
+---
+
+### Event Capturing
+Events normally bubble **up**, but you can listen during the **capture phase** instead.
+
+Passing `true` as the third argument switches the listener to capture mode.
+
+```js
+mainEl.addEventListener('click', addLi, true);
+```
+
+Capture phase order:
+
+1. Root - target
+2. Target
+3. Bubble back up (unless stopped)
+
+Capturing is less common but useful in advanced cases.
+
+---
+
+### Using Events to Modify the DOM
+Events are often used to dynamically create and insert elements.
+
+```js
+function addLi(e) {
+    const li = document.createElement('li');
+    li.innerText = `LI #${i}`;
+    i++;
+    list.appendChild(li);
+}
+```
+
+This pattern combines:
+
+- Event handling
+- DOM creation
+- State tracking
 
 ---

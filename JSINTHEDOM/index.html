@@ -9,7 +9,7 @@
     <body>
         <main>
             <h1>Welcome to the DOM Demo</h1>
-            <button class="toggle-dark-mode" type="button">Dark Mode</button>
+            <!-- <button class="toggle-dark-mode" type="button">Dark Mode</button>
             <p id="first-paragraph">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque dolorum sunt a dolore harum corporis id mollitia at, tenetur sapiente, saepe, officia vero voluptates? Laborum?
             </p>
@@ -18,46 +18,67 @@
             </p>
             <p id="third-paragraph" class="support-paragraph">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas sint maxime natus eos sequi aliquam tenetur sunt excepturi libero at.
-            </p>
+            </p> -->
             <div id="list-section">
+                <a id="add-to-list" href="#">Add new Element To List</a>
                 <ul id="key-items">
                     <li>Our First LI</li>
                     <li>Our Second LI</li>
                     <li>Our Third LI</li>
                 </ul>
             </div>
-            <div>
-                <ul id="good-foods">
-
-                </ul>
-            </div>
         </main>
         <script>
+            'use strict';
+            // let i = 4;
+
+            // const addAction = document.getElementById('add-to-list');
+
+            // // addAction.addEventListener('click', (e) => {
+            // //     e.preventDefault();
+            // //     const li = document.createElement('li');
+            // //     li.innerText = `LI from anchor tag #${i}`;
+            // //     i++;
+            // //     document.getElementById('key-items').appendChild(li); 
+            // // });
+
+            // addAction.addEventListener('click', addFromLink);
+
+            // function addFromLink(e) {
+            //     e.preventDefault();
+            //     const li = document.createElement('li');
+            //     li.innerText = `LI from anchor tag #${i}`;
+            //     i++;
+            //     document.getElementById('key-items').appendChild(li);
+            //     addAction.removeEventListener('click', addFromLink);
+            // };
+
+            // const mainEl = document.querySelector('main');
             // const list = document.getElementById('key-items');
-            // list.innerHTML += '<li>Our Fourth LI</li>';
-            
-            // const foods = ['Hamburgers', 'Hot Dogs', 'Pasta', 'Bread'];
-            // const foodList = document.getElementById('good-foods');
+            // const mainHeading = document.querySelector('h1');
+            // let i = 4;
 
-            // foods.forEach(food => {
-            //     // Least efficient
-            //     //foodList.innerHTML += `<li>${food}</li>`;
+            // // adding true after event changes event to capture instead of bubble
+            // mainEl.addEventListener('click', addLi);
+            // mainHeading.addEventListener('click', addLiFromH1);
 
-            //     // Medium efficient
-            //     const el = document.createElement('li');
-            //     el.innerText = food;
-            //     foodList.appendChild(el);
-            // });
+            // function addLi(e) {
+            //     // const fragment = new DocumentFragment();
+            //     const li = document.createElement('li');
+            //     li.innerText = `LI #${i}`;
+            //     i++;
+            //     // fragment.appendChild(li);
+            //     // list.appendChild(Fragment);
+            //     list.appendChild(li);
+            // }
 
-            // Most efficient
-            // const fragment = new DocumentFragment();
-            // foods.forEach(food => {
-            //     const el = document.createElement('li');
-            //     el.innerText = food;
-            //     fragment.appendChild(el);
-            // });
-
-            // foodList.appendChild(fragment);
+            // function addLiFromH1(e) {
+            //     e.stopPropagation();
+            //     const li = document.createElement('li');
+            //     li.innerText = `LI from H1 #${i}`;
+            //     i++;
+            //     list.appendChild(li);
+            // }
         </script>
     </body>
 </html>
