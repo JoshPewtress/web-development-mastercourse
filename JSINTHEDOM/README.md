@@ -37,6 +37,13 @@ These notes cover how JavaScript locates, selects, and manipulates HTML elements
     - [Stopping Event Propagation](#stopping-event-propagation)
     - [Event Capturing](#event-capturing)
     - [Using Events to Modify the DOM](#using-events-to-modify-the-dom)
+- [Timing and Delayed Actions](#timing-and-delayed-actions)
+    - [setTimeout](#settimeout)
+    - [Storing Timeout IDs](#storing-timeout-ids)
+    - [clearTimeout](#cleartimeout)
+    - [Creating a Countdown Timer](#creating-a-countdown-timer)
+    - [Cancelable Delayed Actions](#cancelable-delayed-actions)
+    - [Delaying UI Changes](#delaying-ui-changes)
 
 ---
 
@@ -569,5 +576,133 @@ This pattern combines:
 - Event handling
 - DOM creation
 - State tracking
+
+---
+
+## Timing and Delayed Actions
+
+JavaScript can delay execution of code using **timers**.  
+This is commonly used for:
+
+- Delayed actions (sending messages, animations)
+- Countdown timers
+- Temporary UI feedback
+- Cancelable operations
+
+The two primary timer functions are:
+
+- `setTimeout()`
+- `clearTimeout()`
+
+### setTimeout
+`setTimeout()` runs a function **after a specified delay (in milliseconds)**.
+
+Basic structure:
+
+```js
+setTimeout(callbackFunction, delayInMilliseconds);
+```
+
+Example:
+
+```js
+setTimeout(() => {
+    console.log('This runs after 1 second');
+}, 1000);
+```
+
+---
+
+### Storing TImeout ID's
+`setTimeout()` returns a **timeout ID**.  
+This ID can be stored in a variable and used later to cancel the timer.
+
+```js
+let timeoutId = setTimeout(doSomething, 2000);
+```
+
+This is required if you want to stop the delayed action before it happens.
+
+---
+
+### clearTimeout
+`clearTimeout()` cancels a scheduled timeout **before it executes**.
+
+```js
+clearTimeout(timeoutId);
+```
+
+This is useful for:
+
+- Cancel buttons
+- Undo actions
+- Preventing duplicate executions
+
+---
+
+### Creating a Countdown Timer
+A countdown can be created by repeatedly calling `setTimeout()` inside a function.
+
+```js
+let countdown = 10;
+
+function countDown() {
+    if (countdown > 0) {
+        console.log(countdown);
+        countdown--;
+        setTimeout(countDown, 1000);
+    } else {
+        console.log('Done!');
+        countdown = 10;
+    }
+}
+```
+
+This pattern allows you to:
+
+- Update the UI every second
+- Perform an action when the countdown finishes
+- Reset state afterward
+
+---
+
+### Cancelable Delayed Actions
+By combining `setTimeout()` and `clearTimeout()`, you can create actions that can be **canceled by the user**.
+
+```js
+let timeoutId = 0;
+
+function startAction() {
+    timeoutId = setTimeout(doAction, 5000);
+}
+
+function cancelAction() {
+    clearTimeout(timeoutId);
+}
+```
+
+This is commonly used for:
+
+- Email send delays
+- Undo notifications
+- Confirmation grace periods
+
+---
+
+### Delaying UI Changes
+Timers can also delay **visual feedback**, such as removing a temporary class.
+
+```js
+function addItem(item) {
+    item.classList.add('new-item');
+    setTimeout(removeHighlight, 2000, item);
+}
+
+function removeHighlight(el) {
+    el.classList.remove('new-item');
+}
+```
+
+Passing parameters into `setTimeout()` allows you to target specific elements rather than all matching elements.
 
 ---

@@ -27,20 +27,60 @@
                     <li>Our Third LI</li>
                 </ul>
             </div>
+            <div>
+                <h2 id="display-message">Send Email Demo</h2>
+                <p id="status-message"></p>
+                <a id="send-email" href="#">Send Email with Mistake</a> <br />
+                <a id="recall-email" href="#">Recall Email</a>
+            </div>
         </main>
         <script>
             'use strict';
-            // let i = 4;
+            let i = 4;
+            const list = document.getElementById('key-items');
+            const addAction = document.getElementById('add-to-list');
+            const displayMessage = document.getElementById('display-message');
+            let timeoutId = 0;
+            let countdown = 10;
+            const sendEmailAnchor = document.getElementById('send-email');
+            const cancelEmailAnchor = document.getElementById('recall-email');
+            const statusMessage = document.getElementById('status-message');
 
-            // const addAction = document.getElementById('add-to-list');
+            sendEmailAnchor.addEventListener('click', sendEmail);
+            cancelEmailAnchor.addEventListener('click', cancelEmail);
 
-            // // addAction.addEventListener('click', (e) => {
-            // //     e.preventDefault();
-            // //     const li = document.createElement('li');
-            // //     li.innerText = `LI from anchor tag #${i}`;
-            // //     i++;
-            // //     document.getElementById('key-items').appendChild(li); 
-            // // });
+            function sendEmail(e) {
+                e.preventDefault();
+                timeoutId = setTimeout(countDownToSend);
+            }
+
+            function countDownToSend() {
+                if (countdown > 0) {
+                    statusMessage.innerText = `Email will send in ${countdown} seconds...`;
+                    countdown--;
+                    timeoutId = setTimeout(countDownToSend, 1000);
+                } else {
+                    actuallySendEmail();
+                    countdown = 10;
+                    statusMessage.innerText = '';
+                }
+            }
+
+            function cancelEmail(e) {
+                e.preventDefault();
+                clearTimeout(timeoutId);
+                cancelSendEmail();
+                countdown = 10;
+            }
+
+            function actuallySendEmail() {
+                displayMessage.innerText = 'The email has been sent!!!!!';
+            }
+
+            function cancelSendEmail() {
+                displayMessage.innerText = 'The email has been recalled!';
+                statusMessage.innerText = '';
+            }
 
             // addAction.addEventListener('click', addFromLink);
 
@@ -48,36 +88,18 @@
             //     e.preventDefault();
             //     const li = document.createElement('li');
             //     li.innerText = `LI from anchor tag #${i}`;
+            //     li.classList.add('new-item');
             //     i++;
-            //     document.getElementById('key-items').appendChild(li);
-            //     addAction.removeEventListener('click', addFromLink);
-            // };
-
-            // const mainEl = document.querySelector('main');
-            // const list = document.getElementById('key-items');
-            // const mainHeading = document.querySelector('h1');
-            // let i = 4;
-
-            // // adding true after event changes event to capture instead of bubble
-            // mainEl.addEventListener('click', addLi);
-            // mainHeading.addEventListener('click', addLiFromH1);
-
-            // function addLi(e) {
-            //     // const fragment = new DocumentFragment();
-            //     const li = document.createElement('li');
-            //     li.innerText = `LI #${i}`;
-            //     i++;
-            //     // fragment.appendChild(li);
-            //     // list.appendChild(Fragment);
             //     list.appendChild(li);
+            //     setTimeout(removeNewItemClass, 2000, li);
             // }
 
-            // function addLiFromH1(e) {
-            //     e.stopPropagation();
-            //     const li = document.createElement('li');
-            //     li.innerText = `LI from H1 #${i}`;
-            //     i++;
-            //     list.appendChild(li);
+            // function removeNewItemClass(item) {
+            //     // const items = list.querySelectorAll('.new-item');
+            //     // const itemsArray = Array.from(items);
+            //     // itemsArray.forEach(el => el.classList.remove('new-item'));
+                    /* If you want to delay each click */
+            //     item.classList.remove('new-item');
             // }
         </script>
     </body>
