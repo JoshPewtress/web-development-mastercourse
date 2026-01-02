@@ -17,9 +17,9 @@
             </nav>
         </header>
         <main>
-            <h1 class="hire-me-header">Offer me a Job!</h1>
+            <h1 class="hire-me-header">Want to hire me?</h1>
 
-            <form action="" method="post">
+            <form id="hire-me-form" action="" method="">
                 <div class="form-label">
                     <label>
                         Company: 
@@ -34,18 +34,27 @@
                 </div>
                 <div class="form-label">
                     <label>
+                        Pay Rate:
+                        <input type="number" id="payRate" name="PayRate" required>
+                    </label>
+                </div>
+                <div class="form-label">
+                    <label>
                         Description: 
                         <input type="text" id="description" name="Description" required>
                     </label>
                 </div>
-                <div>
-                    <button type="submit">Submit Form</button>
-                    <button type="reset">Reset Form</button>
+                <div class="form-button-group">
+                    <button id="submit-button" type="submit">Submit Form</button>
+                    <button id="reset-button" type="reset">Reset Form</button>
                 </div>
+                <div id="form-submitted" hidden></div>
             </form>
         </main>
         <footer>
             <small>&copy; Josh Pewtress, All Rights Reserved</small>
         </footer>
+
+        <script src="js/app.js"></script>
     </body>
 </html>

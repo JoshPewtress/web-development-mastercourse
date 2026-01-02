@@ -59,18 +59,6 @@ caption {
     padding-bottom: .2rem;
 }
 
-form {
-    text-align: center;
-}
-
-label {
-    font-weight: bold;
-}
-
-div.form-label {
-    margin: 6px 0;
-}
-
 footer {
     font-style: italic;
     font-size: .8rem;
@@ -132,6 +120,47 @@ ul.topics li {
 
 .hire-me-header {
     margin: 2rem 0 2rem 0;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#hire-me-form {
+    border: 5px inset #000000;
+    background-color: rgb(210, 210, 210);
+}
+
+.form-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-indent: .2rem;
+    max-width: 60%;
+    margin: 1em auto;
+}
+
+.form-label input {
+    font-size: .9em;
+    width: 100%;
+    margin-top: .2em;
+}
+
+.form-button-group {
+    text-align: center;
+}
+
+#submit-button, #reset-button {
+    font-size: 1rem;
+    padding: .5rem;
+    margin: 0 1em 1em 1em;
+}
+
+#form-submitted {
+    color: #ffffff;
+    background-color: #005000;
+    border: 3px solid black;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: min(20rem, 90%);
 }
 
 .bg-red {
@@ -148,10 +177,6 @@ ul.topics li {
 
 .bg-gray {
     background-color: rgba(78, 78, 78, 0.2);
-}
-
-.active-li {
-    background-color: #ffeaa7;
 }
 
 .content {
